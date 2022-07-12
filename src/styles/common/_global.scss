@@ -1,0 +1,97 @@
+@import "./variables";
+
+.heading-1 {
+  font-size: $font-size-48;
+  line-height: $line-spacing-58;
+}
+.heading-2 {
+  font-size: $font-size-40;
+  line-height: $line-spacing-48;
+}
+
+.heading-3 {
+  font-size: $font-size-32;
+  line-height: $line-spacing-38;
+}
+.heading-5 {
+  font-size: $font-size-18;
+  line-height: $line-spacing-24;
+}
+.heading-4 {
+  font-size: $font-size-28;
+  line-height: $line-spacing-34;
+}
+
+.heading-6{
+  font-size: $font-size-14;
+  line-height: $line-spacing-17;
+}
+
+.badge{
+  font-weight: 600;
+  font-size: $font-size-12;
+  color: $oxford-blue-354e57;
+  padding: 9px 11px;
+  background-color: $alabasterr-f7f7f7;
+}
+.badge.bg-white{
+  background-color: $white-ffffff;
+}
+.badge.offer{
+  color: $cape-palliser-a67744;
+}
+.bg-light-sky{
+  background-color: $light-sky-eef3f4;
+}
+.bg-deep-sky{
+  background-color: $deep-sky-e0e3e8;
+}
+.bg-como-547665{
+  background-color: $como-547665;
+}
+.bg-athens-gray{
+  background-color: $athens-gray-eef2f4;
+}
+.bg-white{
+  background-color: $white-ffffff;
+}
+.bg-f7f7f7f {
+  background-color: $alabasterr-f7f7f7;
+}
+.bg-silver-rust{
+  background-color: $silver-rust-c6b9b6;
+}
+.bg-oxford-blue{
+  background-color: $oxford-blue-354e57;
+}
+.body-text-black{
+  color: #000000 !important;
+}
+
+.padding-0{
+  padding: 0;
+}
+.padding-top-60{
+  padding-top: 60px;
+}
+.padding-top-80{
+  padding-top: 80px;
+}
+.padding-bottom-60{
+  padding-bottom: 60px;
+}
+.padding-top-80{
+  padding-top: 80px;
+}
+.padding-top-120{
+  padding-top: 120px;
+}
+
+@include desktop-down {
+  .padding-top-60, .padding-top-80, .padding-top-120{
+    padding-top: 20px;
+  }
+  .padding-bottom-60, .padding-bottom-80{
+    padding-bottom: 20px;
+  }
+}

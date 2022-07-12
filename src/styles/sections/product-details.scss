@@ -1,0 +1,458 @@
+section {
+  &.product-details{
+    .title{
+      width: 100%
+    }
+    h3, h5, .rating, p{
+      color: $unnamed-color-172026;
+    }
+    h5{
+      font-size: $font-size-20;
+      line-height: $line-spacing-24;
+      font-weight: 600;
+    }
+    h3{
+      font-size: $font-size-36;
+      line-height: $line-spacing-48;
+      margin: 38px 0 8px;
+      font-weight: 600;
+      @include desktop{
+        font-size: $font-size-32;
+        margin: 35px 0 8px;
+      }
+      @include tablet{
+        font-size: $font-size-28;
+        margin: 28px 0 8px;
+      }
+      @include tablet-down{
+        font-size: $font-size-24;
+        line-height: $line-spacing-22;
+        margin: 16px 0 8px;
+      }
+    }
+    .column-wrapper{
+      @include flex();
+      justify-content: flex-start;
+      
+      &:nth-of-type(2n){
+        padding-top: 11px;
+        position: relative;
+
+        @include tablet-down{
+          padding-top: 34px;
+        }
+        h5{
+          @include tablet-down{
+            text-align: center;
+          }
+        }
+
+        &::after{
+          content: "";
+          position: absolute;
+          width: 102px;
+          height: 8px;
+          left: 0;
+          bottom: 0;
+          background-color: $primary-brand;
+          @include desktop-down{
+            bottom: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+          }
+        }
+      }
+    }
+    .col-six{
+      width: 54%;
+      margin-right: 37px;
+      @include desktop-down{
+        width: 100%;
+        max-width: 100%;
+        margin: auto;
+      }
+      h5{
+        margin-top: 16px
+      }
+      P{
+        font-size: $font-size-16;
+        line-height: $line-spacing-24;
+        margin: 16px 0 24px;
+      }
+    }
+    .col-four{
+      width: 40%;
+      max-width: 439px;
+
+      @include desktop-down{
+        width: 100%;
+        max-width: 100%;
+      }
+
+      h5{
+        margin-top: 16px
+      }
+
+      ul{
+        @include flex();
+
+        li{
+          width: 50%;
+          margin: 19px 0 0;
+          padding: 4px 4px 10px 36px; 
+          background: url("../../../public/Images/sunrise.svg") no-repeat;
+        }
+      }
+    }
+    .img-wrapper{
+      @include flex();
+      justify-content: flex-start;
+      max-width: 706px;
+      height: 680px;
+      @include desktop{
+        height: 580px;
+      }
+      @include desktop-down{
+        justify-content: center;
+        margin: auto;
+      }
+      @include tablet-down{
+        height: 410px;
+      }
+      img{
+        width: 100%;
+        height: 100%;
+      }
+      .navigation-img-wrapper{
+        @include flex(100px);
+        height: 100%;
+        position: relative;
+        @include tablet{
+          width: 100%;
+          margin: auto;
+        }
+        @include tablet-down{
+          width: 100%;
+          height: 100%;
+          margin: auto;
+        }
+
+        .nav-img{
+          width: 100px;
+          height: 120px;
+          margin-bottom: 16px;
+          position: relative;
+          @include desktop{
+            height: 103px;
+          }
+          @include desktop-down{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity ease-out 0.3s;
+          }
+          &::after{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            bottom: -5px;
+            left: 0;
+            opacity: 0;
+            background-color: $primary-brand;
+            transition: opacity ease-out 0.3s;
+            @include desktop-down{
+              display: none;
+            }
+          }
+          &.active{
+            &::after{
+              opacity: 1;
+            }
+            opacity: 1;
+          }
+        }
+      }
+      .product-img{
+        width: calc(100% - 117px);
+        max-width: 552px;
+        height: 100%;
+        margin-left: 17px;
+        @include desktop-down{
+          display: none;
+        }
+      }
+    }
+    .product-description{
+      padding-bottom: 17px; 
+      border-bottom: 2px solid $gray-l3;
+      .rating{
+        margin: 17px 0;
+        > span{
+          display: inline-block;
+          padding-left: 15px;
+          background: url("../../../public//Images/star.svg") no-repeat;
+          background-size: 14px;
+        }
+      }
+      p{
+        font-size: $font-size-16;
+        line-height: $line-spacing-22;
+      }
+    }
+    .product-attribute{
+      padding: 16px 0 0;
+      @include tablet-down{
+        padding: 0;
+      }
+      h5{
+        padding: 0 0 16px;
+        width: 100%;
+      }
+      .wrapper{
+        justify-content: flex-start;
+        width: 64px;
+        height: 40px;
+        margin-right: 15px;
+        padding: 0;
+        overflow: hidden;
+        @include tablet-down{
+          width: 60px;
+          margin-right: 6px;
+        }
+        @include phone-small{
+          width: 50px;
+        }
+        &:last-of-type{
+          margin-right: 0
+        } 
+        input{
+          width: 100%;
+          height: 100%;
+          position: relative;
+          border-radius: 8px;
+          appearance: none;
+
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: calc(100% - 4px);
+            height: calc(100% - 4px);
+            top: 0;
+            left: 0;
+            border: 2px solid $gray-m1;
+            border-radius: 6px;
+            transition: all ease-out 0.3s;
+          }
+
+          &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            opacity: 0;
+            transition: all ease-out 0.3s;
+          }
+
+          &:checked {
+            &::after {
+              opacity: 1;
+            }
+          }
+        }
+        label{
+          display: none;
+        }
+      }
+      .product-color, .product-size{
+        @include flex();
+        justify-content: flex-start;
+        padding: 0 0 24px;
+      }
+      .product-color{
+        .wrapper{
+          input{
+            background-color: $black-000000;
+            &::after{
+              width: 19px;
+              height: 12px;
+              top: 50%;
+              left: 50%;
+              background: url("../../../public/Images/check-white.svg") no-repeat 100%;
+              transform: translate(-50%, -50%);
+            }
+            &#red{
+              background: $negative-1 url("../../../public/Images/red.png");
+            }
+            &#blue{
+              background: $primary-l1 url("../../../public/Images/blue.png");
+            }
+            &#grey{
+              background: $gray-m1 url("../../../public/Images/grey.png");
+            }
+            &#black{
+              background: $black-000000 url("../../../public/Images/black.png");
+            }
+          }
+        }
+      }
+      .product-size{
+        .wrapper{
+          position: relative;
+          label{
+            display: inline-block;
+            text-align: center;
+            font-size: $font-size-16;
+            color: $gray-d;
+            font-weight: 600;
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 100%;
+            height: 100%;
+            transition: color ease-out 0.3s;
+          }
+          input{
+            &::after{
+              width: calc(100% - 8px);
+              height: calc(100% - 8px);
+              top: 4px;
+              left: 4px;
+              background: $gray-d;
+              border-radius: 4px;
+            }
+            &:checked{
+              ~ label{
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+      .product-kart{
+        
+        .wrapper{
+          width: fit-content;
+          height: 100%;
+          padding: 0 0 40px;
+
+          @include phone-down{
+            width: 100%;
+            justify-content: center;
+          }
+          
+          #productQuantity{
+            font-size: $font-size-16;
+            font-weight: 600;
+            width: 111px;
+            padding: 11px 0;
+            margin: 0 12px;
+            border: 2px solid $gray-m1;
+            border-radius: 8px;
+            text-align: center;
+            @include phone-down{
+              width: 169px;
+            }
+          }
+
+          .decrease, .increase{
+            display: block;
+            font-size: $font-size-28;
+            font-weight: 600;
+            color: $gray-m1;
+            width: 32px;
+            height: 32px;
+            border: 2px solid $gray-m1;
+            border-radius: 50%;
+            text-align: center;
+            cursor: pointer;
+
+            &.disabled{
+              pointer-events: none;
+              background-color: $gray-l4;
+            }
+          }
+        }
+        .kart-btn{
+          max-width: 318px;
+          text-align: center;
+          color: $white;
+          background-color: $primary-brand;
+          padding: 12px;
+          border-radius: 28px;
+          cursor: pointer;
+          h6{
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .slider-btn{
+      position: absolute;
+      display: block;
+      top:-20px;
+      left: 0;
+      width: 100%;
+      height: calc(100% + 40px);
+      z-index: 1;
+      @include desktop-down {
+        display: none;
+      }
+      .next, .prev{
+        position: absolute;
+        text-indent: -9999px;
+        bottom: 0;
+        left: 50%;
+        height: 20px;
+        width: 100%;
+        outline: none;
+        border: none;
+        transform: translateX(-50%);
+        cursor: pointer;
+      }
+      .prev{
+        top: -10px;
+        background: $white url("../../../public/Images/chevron-up.svg") no-repeat 50%;
+      }
+      .next{
+        background: $white url("../../../public//Images/chevron-down.svg") no-repeat 50%;
+      }
+    }
+    .slider-dots{
+      display: none;
+      @include desktop-down{
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 6px;
+        bottom: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        ul{
+          @include flex();
+          height: 100%;
+          justify-content: center;
+          li{
+            width: 6px;
+            height: 6px;
+            margin: 0 4px;
+            border-radius: 50%;
+            background-color: $black-000000;
+            cursor: pointer;
+            transition: backgroud ease-out 0.3s;
+            &.active{
+              background-color: $gray-d;
+            }
+          }
+
+        }
+      }
+      
+    }
+  }
+}

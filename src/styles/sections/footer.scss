@@ -1,0 +1,129 @@
+footer {
+  &.footer {
+    padding: 40px 0 33px;
+    margin: 40px 0 0;
+    border-top: 4px solid $gray-l1;
+    @include desktop-down{
+      padding: 28px 0 7px;
+    }
+    .column-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    a {
+      text-decoration: none;
+      color: $unnamed-color-172026;
+    }
+
+    p,
+    li {
+      font-size: $font-size-16;
+      line-height: $line-spacing-24;
+      color: $unnamed-color-172026;
+    }
+
+    p {
+      font-weight: 600;
+    }
+
+    .footer-menu-wrapper {
+      padding: 0 0 32px;
+      border-bottom: 2px solid $gray-l1;
+      @include tablet-down{
+        padding: 0 0 80px;
+      }
+      .col-four {
+        width: 25%;
+        @include desktop-down {
+          width: 100%;
+          padding: 32px 0 0;
+        }
+        
+        ul {
+          padding: 16px 0 0;
+
+          li {
+            margin: 0 0 8px;
+
+            &:last-of-type {
+              margin: 0;
+            }
+          }
+
+          &.social-icon-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+
+            li {
+              line-height: normal;
+              margin: 0;
+              a {
+                width: 20px;
+                height: 20px;
+                display: inline-block;
+                margin-right: 25px;
+                &.facebook {
+                  background: url("../../../public/Images/logo-facebook.svg") no-repeat;
+                  background-size: contain;
+                }
+
+                &.twitter {
+                  background: url("../../../public/Images/logo-twitter.svg") no-repeat;
+                  background-size: contain;
+                }
+
+                &.instagram {
+                  background: url("../../../public/Images/logo-instagram.svg") no-repeat;
+                  background-size: contain;
+                }
+
+                span {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .footer-policy-wrapper {
+      padding: 32px 0 0;
+      @include tablet-down{
+        padding: 34px 0 0;
+        text-align: center;
+      }
+      .column-wrapper{
+        @include desktop-down{
+          justify-content: center;
+          flex-direction: column-reverse;
+        }
+      }
+      .col-three{
+        width: fit-content;
+        @include desktop-down{
+          width: 100%;
+          padding-bottom: 25px;
+        }
+      }
+      a {
+        text-decoration: underline;
+        display: inline-block;
+        font-size: $font-size-14;
+        margin-right: 19px;
+        &:last-of-type {
+            margin-right: 0;
+        }
+      }
+      .logo{
+        @include desktop-down{
+          display: none;
+        }
+      }
+    }
+  }
+}

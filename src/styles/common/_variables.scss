@@ -1,0 +1,135 @@
+// colors varialbles
+$red: #f70707;
+$light-sky-eef3f4: #eef3f4; 
+$deep-sky-e0e3e8: #e0e3e8;
+$cape-palliser-a67744: #A67744;
+$beige-f7f5e6: #F7F5E6;
+$alabasterr-f7f7f7: #F7F7F7;
+$athens-gray-eef2f4: #EEF2F4;
+$silver-rust-c6b9b6: #C6B9B6;
+$oxford-blue-354e57: #354E57;
+$como-547665: #547665;
+$mischka-d7ccdd: #D7CCDD;
+$rangitoto-2e2e22: #2E2E22;
+$punch-de3b35: #DE3B35;
+$blue-0014ff: #0014FF;
+$white-ffffff: #FFFFFF;
+$black-000000: #000000;
+$palliser-956a53: #9A6B39;
+$light-palliser-956a53: #956A53;
+
+$primary-d1: #172BC4;
+$primary-m1: #336DFF;
+$primary-brand: #1F39FF;
+$primary-l1: #3D84FF;
+$gray: #FAFAFA;
+$gray-d: #545D63;
+$gray-d2: #181C24;
+$gray-d1: #535965;
+$gray-m1: #91959C;
+$gray-l2: #B5B7BC;
+$gray-l1: #E5E5E7;
+$gray-l3: #D1D3D6;;
+$gray-l4: #EAEBEB;
+$white: #FFFFFF;
+$positive-2: #12805C;
+$positive-1: #268E6C;
+$negative-2: #C9252D;
+$negative-1: #D7373F;
+$unnamed-color-172026: #172026;
+
+/* Font/text values */
+$font-family-proxima-nova: Proxima Nova;
+$font-style-normal: normal;
+$font-weight-bold: bold;
+$font-weight-normal: normal;
+$font-size-12: 12px;
+$font-size-14: 14px;
+$font-size-16: 16px;
+$font-size-18: 18px;
+$font-size-20: 20px;
+$font-size-28: 28px;
+$font-size-24: 24px;
+$font-size-25: 25px;
+$font-size-32: 32px;
+$font-size-40: 40px;
+$font-size-36: 36px;
+$font-size-48: 48px;
+$font-size-54: 54px;
+$font-size-58: 58px;
+$character-spacing-0: 0px;
+$line-spacing-17: 17px;
+$line-spacing-22: 22px;
+$line-spacing-24: 24px;
+$line-spacing-34: 34px;
+$line-spacing-38: 38px;
+$line-spacing-48: 48px;
+$line-spacing-58: 58px;
+
+// breaking points
+$mobile-width : 320px;
+$tablet-width : 768px;
+$desktop-width : 1024px;
+$desktop-md-width : 1280px;
+$desktop-lg-width : 1440px;
+$desktop-xl-width : 1920px;
+
+
+// max-width: 360px and min-width: 320px;
+@mixin phone-small {
+  @media screen and (min-width: $mobile-width) and (max-width: ($mobile-width + 40)) {
+    @content;
+  }
+}
+
+// max-width: 479px
+@mixin phone-down {
+  @media screen and (max-width: ($mobile-width + 159)) {
+    @content;
+  }
+}
+
+// max-width: 767px
+@mixin tablet-down {
+  @media screen and (max-width: ($tablet-width - 1)) {
+    @content;
+  }
+}
+
+// min-width: 768px and max-width: 992px
+@mixin tablet {
+  @media screen and (min-width: $tablet-width) and (max-width: ($desktop-width - 32)) {
+    @content;
+  }
+}
+
+// max-width: 1279px
+@mixin desktop-md-down{
+  @media screen and (max-width: ($desktop-md-width - 1)) {
+    @content;
+  }
+}
+
+// max-width: 991px
+@mixin desktop-down {
+  @media screen and (max-width: ($desktop-width - 33)) {
+    @content;
+  }
+}
+
+// min-width: 992px and max-width: 1280px
+@mixin desktop {
+  @media screen and (max-width: $desktop-md-width) and (min-width: ($desktop-width - 32)) {
+    @content;
+  }
+}
+
+@mixin flex($width:100%) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: $width;
+}
+
+

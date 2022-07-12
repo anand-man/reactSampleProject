@@ -1,0 +1,260 @@
+section{
+  &.product-kart{
+    background-color: $gray;
+    .no-products{
+      max-width: 400px;
+      margin: 40px auto auto;
+      text-align: center;
+      padding: 40px 30px;
+      background-color: $white;
+      box-shadow: 0px 0px 8px #0000000D;
+      border-radius: 4px;
+    }
+    .mobile-option{
+      display: none;
+      @include tablet-down{
+        display: block;
+        position: absolute;
+        width: 16px;
+        height: 2px;
+        right: 0;
+        top: -20px;
+        z-index: 1111;
+      }
+      span{
+        font-size: $font-size-24;
+      }
+    }
+    h1{
+      color: $unnamed-color-172026;
+      position: relative;
+      text-align: center;
+      @include tablet-down{
+        font-size: $font-size-36;
+      }
+       &::after{
+        content: "";
+        position: absolute;
+        width: 102px;
+        height: 8px;
+        bottom: -10px;
+        left: 50%;
+        background-color: $primary-brand;
+        transform: translateX(-50%);
+       }
+
+    }
+    p, h5{
+      color: $unnamed-color-172026;
+    }
+    h5{
+      width: 100%;
+      font-size: $font-size-20;
+      line-height: $line-spacing-24;
+      font-weight: 600;
+      margin-bottom: 8px;
+      @include tablet-down{
+        font-size: $font-size-18;
+      }
+    }
+    p{
+      font-size: $font-size-16;
+      // line-height: $line-spacing-24;
+      margin-bottom: 8px;
+    }
+    .column-wrapper{
+      @include flex();
+      padding: 60px 0 0;
+      @include tablet-down{
+        padding: 42px 0 0;
+      }
+    }
+    .col-six{
+      width: 60%;
+      @include desktop{
+        width: 65%
+      }
+      @include desktop-down{
+        width: 100%
+      }
+      .card{
+        @include flex();
+        margin-bottom: 34px;
+        position: relative;
+      }                        
+      .content-wrapper{
+        @include flex(calc(100% - 166px));
+        padding-left: 17px;
+        @include tablet-down{
+          width: calc(100% - 100px);
+        }
+        h5{
+          @include tablet-down{
+            width: calc(100% - 20px);
+          }
+        }
+      }
+      .img-wrapper{
+        width: 166px;
+        height: 199px;
+        @include tablet-down{
+          width: 100px;
+          height: 119px;
+        }
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .product-description{
+        width: 37%;
+        @include desktop{
+          width: 27%;
+        }
+        @include tablet-down{
+          width: 100%;
+        }
+      }
+      .product-kart{
+        .wrapper{
+          width: fit-content;
+          height: 100%;
+          padding: 0 0 40px;
+
+          @include phone-down{
+            width: 100%;
+            justify-content: center;
+          }
+          
+          #productQuantity{
+            font-size: $font-size-16;
+            font-weight: 600;
+            width: 88px;
+            padding: 11px 0;
+            margin: 0 12px;
+            border: 2px solid $gray-m1;
+            border-radius: 8px;
+            text-align: center;
+            @include phone-down{
+              width: 80px;
+            }
+            @include phone-small{
+              width: 70px;
+            }
+          }
+          .decrease, .increase{
+            display: block;
+            font-size: $font-size-28;
+            font-weight: 600;
+            color: $gray-m1;
+            width: 32px;
+            height: 32px;
+            border: 2px solid $gray-m1;
+            border-radius: 50%;
+            text-align: center;
+            cursor: pointer;
+
+            &.disabled{
+              pointer-events: none;
+              background-color: $gray-l4;
+            }
+          }
+        }
+      }
+      .kart-btn{
+        @include tablet-down{
+          position: absolute;
+          width: 120px;
+          height: 120px;
+          top: 3px;
+          right: 0;
+          padding: 20px 10px;
+          background-color: $white;
+          border-radius: 8px;
+          box-shadow: 0px 0px 8px #0000000D;
+          opacity: 0;
+        }
+        &.show{
+          opacity: 1;
+        }
+        ul{
+          li{
+            color: $unnamed-color-172026;
+            font-size: $font-size-12;
+            line-height: $line-spacing-17;
+            margin-bottom: 17px;
+            padding-left: 24px;
+            font-weight: 600;
+            cursor: pointer;
+            &:last-of-type{
+              margin-bottom: 0;
+            }
+            &.edit{
+              background: url("../../../public/Images/edit-2.svg") no-repeat;
+              background-size: 16px;
+            }
+            &.remove{
+              background: url("../../../public/Images/trash-2.svg") no-repeat;
+              background-size: 16px;
+            }
+            &.save-later{
+              background: url("../../../public/Images/heart.svg") no-repeat;
+              background-size: 16px;
+            }
+            background-size: 16px 16px;
+          }
+        }
+      }
+    }
+    .col-four{
+      width: 33%;
+      padding: 32px 28px 40px 32px;
+      box-shadow: 0px 0px 8px #0000000D;
+      border: 1px solid #D1D3D6;
+      border-radius: 2px;
+      @include desktop-down{
+        padding: 24px 0 0;
+        border: none;
+        box-shadow: initial;
+      }
+      @include tablet-down{
+        width: 100%;
+      }
+      ul{
+        padding: 24px 0 0;
+        li{
+          font-size: $font-size-16;
+          line-height: $line-spacing-24;
+          margin-bottom: 16px;
+          &:last-of-type{
+            font-weight: bold;
+          }
+          span{
+            float: right;
+          }
+        }
+      }
+
+      h6{
+          text-transform: capitalize;
+          max-width: 247px;
+          margin: 24px auto auto;
+          text-align: center;
+          color: $white;
+          padding: 12px;
+          border-radius: 28px;
+          font-weight: bold;
+          cursor: pointer;
+
+          &.checkout{
+            background: $primary-brand url("../../../public/Images/smile.svg") no-repeat 58px 8px;
+          }
+
+          &.pay-pal{
+            text-indent: -9999px;
+            background: url("../../../public/Images/pp-btn.png") no-repeat;
+          }
+      }
+    }
+  }
+}

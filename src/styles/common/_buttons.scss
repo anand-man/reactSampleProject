@@ -1,0 +1,74 @@
+@import "variables";
+
+// Edit default button style here
+
+%btn-default{
+  display: inline-block;
+  font-size: $font-size-14;
+  line-height: $line-spacing-17;
+  padding: 11px 40px;
+  border: 1px solid $oxford-blue-354e57;
+  color: $rangitoto-2e2e22;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all ease-out 0.3s;
+
+  &:hover{
+    background-color: $white-ffffff;
+  }
+}
+
+.btn-default{
+  @extend %btn-default;
+}
+
+.btn-white{
+  @extend %btn-default;
+  border: 1px solid $white-ffffff;
+  color: $beige-f7f5e6;
+
+  &:hover{
+    color: $black-000000;
+  }
+}
+
+.btn-light-black{
+  @extend %btn-default;
+  border-color: $light-palliser-956a53;
+  color: $rangitoto-2e2e22;
+}
+
+.btn-with-icon {
+  position: relative;
+  display: inline-block;
+  font-size: $font-size-12;
+  color: $rangitoto-2e2e22;
+  line-height: 15px;
+  padding: 8px 30px;
+  min-width: 251px;
+  text-align: center;
+  border: 1px solid $oxford-blue-354e57; 
+  cursor: pointer;
+  transition: all ease-out 0.3s;
+
+  span{
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 13px;
+      height: 9px;
+      left: -16px;
+      top: 0;
+      background: url("../../images/cart-outline.svg") no-repeat;
+      transition: all ease-out 0.3s;
+    }
+  }
+
+  &:hover{
+    background-color: $white-ffffff;
+  }
+}

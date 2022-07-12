@@ -1,0 +1,46 @@
+.product-offer{
+  background-color: $white;
+  ul{
+    li{
+      @include flex();
+      align-items: center;
+      color: $unnamed-color-172026;
+      font-size: $font-size-20;
+      line-height: $line-spacing-24;
+      padding: 0 53px 0 32px;
+      position: relative;
+      border: 1px solid #D1D3D6;
+      @include tablet-down{
+        display: block;
+        padding: 16px 40px 16px 24px;
+      }
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        right: 30px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 14px;
+        height: 14px;
+        background: url("../../../public/Images/chevron-down.svg") no-repeat;
+      }
+      h5{
+        width: 50%;
+        margin: 24px 0;
+        @include tablet-down{
+          width: 100%;
+          margin: 0;
+        }
+      }
+      span{
+        font-size: $font-size-14;
+        float: right;
+        @include tablet-down{
+          float: none;
+        }
+      }
+    }
+  }
+}

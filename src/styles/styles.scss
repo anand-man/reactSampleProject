@@ -1,0 +1,94 @@
+@import "./common/font-face";
+@import "./common/variables";
+@import "./common/global";
+// @import "./common/buttons";
+// @import "./common/aem-grid";
+
+@import "./sections/header.scss";
+@import "./sections/hero-banner.scss";
+@import "./sections/products-list.scss";
+@import "./sections/product-details.scss";
+@import "./sections/product-kart.scss";
+@import "./sections/product-offer.scss";
+@import "./sections/footer.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'muli', sans-serif;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: normal;
+  }
+  
+  li {
+    list-style-type: none;
+  }
+  
+  .container {
+    max-width: 1371px;
+    padding: 0 20px;
+    margin: auto;
+    position: relative;
+    width: 100%;
+    @include tablet-down{
+      padding: 0 16px;
+    }
+  }
+  section{
+    padding: 40px 0;
+  }
+  
+  .wrapper {
+    padding: 10px 0;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .input-box {
+    width: calc(100% - 130px);
+    height: 38px;
+    padding: 5px 10px;
+    outline: none;
+    border: 1px solid;
+  }
+  .input-wrapper{
+    label{
+      display: none;
+    }
+  }
+  
+   
+  @include tablet-down {
+    section{
+      padding: 20px 0;
+    }
+  }
+  body{
+    &.menu-mobile{
+      @include desktop-down{
+        overflow: hidden;
+      }
+      .header{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: calc(100% - 32px);
+        height: 100%;
+        background-color: $white;
+        overflow: hidden;
+        z-index: 1111;
+      }
+    }
+  
+  }
