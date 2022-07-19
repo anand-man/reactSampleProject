@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState} from "react";
+import {useSelector } from "react-redux";
 import Container from "../commons/Container";
 import Input from "../commons/Input";
-import { loadProducts } from "../../store/action";
 import { Link } from "react-router-dom";
 
 export default function Products() {
@@ -11,7 +10,6 @@ export default function Products() {
   const [filterDatas, setFilterDatas] = useState([]);
 
   const store = useSelector((state) => state.productData);
-  const dispatch = useDispatch();
 
   let productsData = [...store.products];
 
@@ -24,10 +22,6 @@ export default function Products() {
   });
 
   const totalPage = filterDatas.length > 0 ? Math.ceil(filterDatas.length / 12) : Math.ceil(productsData.length / 12);
-
-  useEffect(() => {
-    dispatch(loadProducts());
-  }, [dispatch]);
 
   const onFilterClick = () => {
     document.querySelector(".filter-wrapper").classList.toggle("active");
