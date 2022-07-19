@@ -177,14 +177,16 @@ export default function Products() {
   const products = datas.map((item) => {
     const { id, image, price, title, category } = item;
     return (<div key={id} className="cards">
+      <Link to={`/products/${category.split(" ").join("_")}/${id}`}>
       <div className="img-wrapper">
         <img src={image} alt={title}/>
       </div>
       <div className="content-wrapper">
-        <Link to={`/products/${category.split(" ").join("_")}/${id}`}><p>{title.slice(0, 20)}...</p></Link>
+        <p>{title.slice(0, 20)}...</p>
         <span>&#8377; {(price * 77).toFixed(2)}</span>
-        <p><img src={process.env.PUBLIC_URL + `/Images/heart.svg`} alt="heart" /></p>
       </div>
+      </Link>
+      <div className="wish-icon"><img src={process.env.PUBLIC_URL + `/Images/heart.svg`} alt="heart" /></div>
     </div>)
   });
 
@@ -197,7 +199,7 @@ export default function Products() {
             <span>Clothing / Women’s / Outerwear</span>
             <div className="filter-wrapper">
               <h5 className="heading-5">Filters</h5>
-              <p>Attributes</p>
+              <p>Category</p>
               <ul>
                 <li><Input input={{ id: "womenClothing", type: "checkbox", value: "women's clothing", onChange: onChangeFilter }} className="wrapper" label="Women's Clothing" /></li>
                 <li><Input input={{ id: "mensClothing", type: "checkbox", value: "men's clothing", onChange: onChangeFilter }} className="wrapper" label="Men's Clothing" /></li>

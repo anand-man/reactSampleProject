@@ -33,7 +33,7 @@ export default function Slider(props) {
       <div className="slider">
       {props.dataSlider.map((item, index) => {
         return (
-          <div key={index} className={slideIndex === index + 1 ? "nav-img active" : "nav-img"}><img src={props.image} alt="product image" /></div>
+          <div key={index} className={slideIndex === index + 1 ? "nav-img active" : "nav-img"}><img src={props.image} alt="product" /></div>
         )
       })}
       </div>

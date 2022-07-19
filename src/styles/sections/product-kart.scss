@@ -84,6 +84,7 @@ section{
       }                        
       .content-wrapper{
         @include flex(calc(100% - 166px));
+        align-items: center;
         padding-left: 17px;
         @include tablet-down{
           width: calc(100% - 100px);
@@ -119,8 +120,6 @@ section{
         .wrapper{
           width: fit-content;
           height: 100%;
-          padding: 0 0 40px;
-
           @include phone-down{
             width: 100%;
             justify-content: center;
@@ -195,7 +194,7 @@ section{
             }
             &.remove{
               background: url("../../../public/Images/trash-2.svg") no-repeat;
-              background-size: 16px;
+              background-size: 12px;
             }
             &.save-later{
               background: url("../../../public/Images/heart.svg") no-repeat;
@@ -235,13 +234,17 @@ section{
         }
       }
 
+      h5{
+        margin-bottom: 0;
+      }
+
       h6{
           text-transform: capitalize;
           max-width: 247px;
           margin: 24px auto auto;
           text-align: center;
           color: $white;
-          padding: 12px;
+          padding: 14px 0 9px;
           border-radius: 28px;
           font-weight: bold;
           cursor: pointer;

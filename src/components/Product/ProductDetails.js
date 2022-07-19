@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import {useNavigate, useParams } from "react-router-dom";
 import {getKartNotification, getSingleProduct } from "../../store/action";
 import Container from "../commons/Container";
 import Input from "../commons/Input";
@@ -10,11 +10,8 @@ export default function ProductDetails() {
 
   const store = useSelector(state => state.productData);
   const dispatch = useDispatch();
-  const { productId } = useParams();
-
-  // const singleProductData = store.products ? store.products[productId] : store.product;
-
-  // console.log(singleProductData)
+  const param = useParams();
+  const navigate = useNavigate();
   
   const { id, image, price, title, category, rating, description } = store.product;
   const { colorAttr, sizeAttr } = store.productAttr;
@@ -28,8 +25,8 @@ export default function ProductDetails() {
   });
 
   useEffect(() => {
-    dispatch(getSingleProduct(productId));
-  }, [dispatch, productId]);
+    dispatch(getSingleProduct(param.productId));
+  }, [dispatch, param.productId]);
 
   const onIncreaseItem = (item) => {
     item = document.getElementById("productQuantity").textContent;
@@ -80,6 +77,8 @@ export default function ProductDetails() {
               </div>
             </div>
             <div className="col-four">
+            <div className="breadcrumb"><span className="product" onClick={() => navigate("/")}>Products</span><span>/</span>
+            <span>{param.category}</span></div>
               <div className="product-description">
                 <h3>{title.slice(0, 20)}...</h3>
                 <h5>&#8377; {(price * 77).toFixed(2)}</h5>
@@ -108,9 +107,10 @@ export default function ProductDetails() {
                     <p id="productQuantity">{cartItem.totalItem}</p>
                     <span className={cartItem.totalItem < 10 ? "increase" : "increase disabled"} onClick={onIncreaseItem}>+</span>
                   </div>
-                  <div className="kart-btn"  onClick={() => onAddtoKart(id)}>
-                    <h6 className="heading-6"><span>ADD TO CART</span></h6>
+                  <div className="kart-btn"  onClick={() => {onAddtoKart(id); navigate("/kart")}}>
+                    <h6 className="heading-6">ADD TO CART</h6>
                   </div>
+
                 </div>
               </div>
             </div>

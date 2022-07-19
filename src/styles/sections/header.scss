@@ -2,6 +2,12 @@ header{
  &.header {
     padding: 16px 0;
     border-bottom: 1px solid $gray-l1;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: $white;
+    z-index: 1111;
     @include desktop-down{
       padding: 23px 0;
     }

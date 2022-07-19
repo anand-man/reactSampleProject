@@ -41,6 +41,10 @@
           float: none;
         }
       }
+      &:nth-of-type(2n){
+        border-bottom: none;
+        border-top: none;
+      }
     }
   }
 }

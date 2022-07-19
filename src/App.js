@@ -12,8 +12,7 @@ function App() {
     <>
       <Header/>
       <Routes>
-        <Route exact path ="/" element={<HeroBanner/>}/>
-        <Route path="/products" element= {<><HeroBanner/><Products/></> }/>
+        <Route path="/" element= {<><HeroBanner/><Products/></> }/>
         <Route path="/products/:category/:productId" element= {<ProductDetails/>}/>
         <Route path="/kart" element= {<ProductKart/>}/>
       </Routes>
