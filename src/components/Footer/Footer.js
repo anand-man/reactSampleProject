@@ -47,7 +47,7 @@ export default function Footer() {
         <div className="column-wrapper">
           <div className="col-three">
             <div className="logo">
-                <a href='#'><img src={process.env.PUBLIC_URL + `/Images/logo.png`}/></a>
+                <a href='#'><img src={process.env.PUBLIC_URL + `/Images/logo-white.png`}/></a>
             </div>
           </div>
           <div className="col-three">

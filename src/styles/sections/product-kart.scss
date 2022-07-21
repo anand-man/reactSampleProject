@@ -160,7 +160,7 @@ section{
           }
         }
       }
-      .kart-btn{
+      .kart-option{
         @include tablet-down{
           position: absolute;
           width: 120px;
@@ -238,17 +238,9 @@ section{
         margin-bottom: 0;
       }
 
-      h6{
-          text-transform: capitalize;
+      .kart-btn{
           max-width: 247px;
           margin: 24px auto auto;
-          text-align: center;
-          color: $white;
-          padding: 14px 0 9px;
-          border-radius: 28px;
-          font-weight: bold;
-          cursor: pointer;
-
           &.checkout{
             background: $primary-brand url("../../../public/Images/smile.svg") no-repeat 58px 8px;
           }

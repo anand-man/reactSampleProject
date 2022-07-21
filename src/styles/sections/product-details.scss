@@ -1,9 +1,16 @@
 section {
   &.product-details{
     .title{
-      width: 54%;
-      @include desktop-down{
+      @include flex();
+      justify-content: center;
+      h3{
         width: 100%;
+        margin-right: 37px;
+        @include desktop-down{
+          width: 100%;
+          max-width: 100%;
+          margin: auto;
+        }
       }
     }
     h3, h5, .rating, p{
@@ -29,51 +36,65 @@ section {
       }
       @include tablet-down{
         font-size: $font-size-24;
-        line-height: $line-spacing-22;
+        line-height: $line-spacing-30;
         margin: 16px 0 8px;
       }
     }
     .column-wrapper{
       @include flex();
-      justify-content: flex-start;
+      max-width: 1212px;
+      justify-content: center;
       position: relative;
-      
       &:nth-of-type(2n){
         padding-top: 11px;
         position: relative;
-
-        @include tablet-down{
-          padding-top: 34px;
-        }
-        h5{
-          @include tablet-down{
-            text-align: center;
-          }
-        }
-
         &::after{
-          content: "";
-          position: absolute;
-          width: 102px;
-          height: 8px;
-          left: 0;
-          bottom: 0;
-          background-color: $primary-brand;
           @include desktop-down{
+            content: "";
+            position: absolute;
+            width: 102px;
+            height: 8px;
+            background-color: $primary-brand;
+            display: block;
             bottom: -24px;
             left: 50%;
             transform: translateX(-50%);
           }
         }
+
+        @include tablet-down{
+          padding-top: 32px;
+        }
+        h5, h3{
+          @include tablet-down{
+            text-align: center;
+          }
+        }
         .col-six{
+          width: 100%;
+          position: relative;
           @include desktop-down{
+            width: 100%;
             margin: auto;
+          }
+
+          &::after{
+            content: "";
+            position: absolute;
+            width: 102px;
+            height: 8px;
+            left: 0;
+            bottom: 0;
+            background-color: $primary-brand;
+            @include desktop-down{
+              display: none;
+            }
           }
         }
       }
     }
     .col-six{
-      width: 54%;
+      width: 51.5%;
       margin-right: 37px;
       @include desktop-down{
         width: 100%;
@@ -81,7 +102,7 @@ section {
         margin: 44px auto auto;
       }
       h5{
-        margin-top: 16px
+        padding-top: 16px
       }
       P{
         font-size: $font-size-16;
@@ -96,10 +117,6 @@ section {
       @include desktop-down{
         width: 100%;
         max-width: 100%;
-      }
-
-      h5{
-        margin-top: 16px
       }
 
       ul{
@@ -217,9 +234,6 @@ section {
     }
     .product-attribute{
       padding: 16px 0 0;
-      @include tablet-down{
-        padding: 0;
-      }
       h5{
         padding: 0 0 16px;
         width: 100%;
@@ -287,7 +301,7 @@ section {
       .product-color{
         .wrapper{
           input{
-            background-color: $black-000000;
+            background-color: $black;
             &::after{
               width: 19px;
               height: 12px;
@@ -306,7 +320,7 @@ section {
               background: $gray-m1 url("../../../public/Images/grey.png");
             }
             &#black{
-              background: $black-000000 url("../../../public/Images/black.png");
+              background: $black url("../../../public/Images/black.png");
             }
           }
         }
@@ -396,8 +410,40 @@ section {
           padding: 14px 0 9px;
           border-radius: 28px;
           cursor: pointer;
+          @include phone-down{
+            max-width: 311px;
+            margin: auto;
+          }
           h6{
             font-weight: bold;
+          }
+        }
+        .wish-btn{
+          max-width: 318px;
+          padding: 24px 0 0;
+          @include phone-down{
+            max-width: 311px;
+            margin: auto;
+          }
+          ul{
+            max-width: 100%;
+            margin: auto;
+            justify-content: center;
+
+            li{
+              margin: 0 32px 0 0;
+              width: fit-content;
+              padding: 0 0 0 24px;
+              cursor: pointer;
+              &.save{
+                background: url("../../../public/Images/heart.svg") no-repeat;
+                background-size: 18px 16px;
+              }
+              &.share{
+                background: url("../../../public/Images/share-2.svg") no-repeat;
+                background-size: 18px 16px;
+              }
+            }
           }
         }
       }
@@ -454,7 +500,7 @@ section {
             height: 6px;
             margin: 0 4px;
             border-radius: 50%;
-            background-color: $black-000000;
+            background-color: $black;
             cursor: pointer;
             transition: backgroud ease-out 0.3s;
             &.active{

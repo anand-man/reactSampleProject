@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {useNavigate, useParams } from "react-router-dom";
 import {getKartNotification, getSingleProduct } from "../../store/action";
 import Container from "../commons/Container";
-import Input from "../commons/Input";
+import Loader from "../commons/Loader";
 import Slider from "../commons/slider/Slider";
 
 export default function ProductDetails() {
@@ -14,7 +14,6 @@ export default function ProductDetails() {
   const navigate = useNavigate();
   
   const { id, image, price, title, category, rating, description } = store.product;
-  const { colorAttr, sizeAttr } = store.productAttr;
   const [cartItem, setCartItem] = useState({
     initialItem: 1,
     totalItem: 1,
@@ -57,14 +56,11 @@ export default function ProductDetails() {
     dispatch(getKartNotification(product));
   }
 
-  const sizeColor = category === "women's clothing" || category === "men's clothing" ? true : false;
-
   const ratingClass = rating && rating.rate === 3 ? "rating star-3" : "rating" || rating.rate >= 3.1 ? "rating star-3.5" : "rating" || rating.rate === 4 ? "rating star-4" : "rating" || rating.rate >= 4.1 ? "rating star-4.5" : "rating" || rating.rate === 2 ? "rating star-2" : "rating" || rating.rate >= 2.5 ? "rating star-2.5" : "rating";
 
   return (
     <section className="product-details">
-      <Container>
-        {id > 0 && <>
+      {+id !== +param.productId  ? <Loader/> : <Container>
           <div className="column-wrapper">
             <div className="col-six">
               <div className="img-wrapper">
@@ -80,26 +76,12 @@ export default function ProductDetails() {
             <div className="breadcrumb"><span className="product" onClick={() => navigate("/")}>Products</span><span>/</span>
             <span>{param.category}</span></div>
               <div className="product-description">
-                <h3>{title.slice(0, 20)}...</h3>
+                <h3>{title}</h3>
                 <h5>&#8377; {(price * 77).toFixed(2)}</h5>
                 <div className={ratingClass}><span>{rating && rating.rate} ({rating && rating.count})</span></div>
                 <p>{description.slice(0, 100)}...</p>
               </div>
               <div className="product-attribute">
-                {sizeColor  &&  <> <div className="product-color">
-                  <h5>Color</h5>
-                  {colorAttr.map(item => {
-                    const { color, id} = item;
-                    return <Input key={id} input={{ id: color, type: "radio", name: "color" }} className="wrapper" label={color}></Input>
-                  })}
-                </div>
-                <div className="product-size">
-                  <h5>Size</h5>
-                  {sizeAttr.map(item => {
-                    const { size, id } = item;
-                    return <Input key={id} input={{ id: size, type: "radio", name: "size" }} className="wrapper" label={size} />
-                  })}
-                </div> </>}
                 <div className="product-kart">
                   <h5>Quantity</h5>
                   <div className="wrapper">
@@ -108,32 +90,26 @@ export default function ProductDetails() {
                     <span className={cartItem.totalItem < 10 ? "increase" : "increase disabled"} onClick={onIncreaseItem}>+</span>
                   </div>
                   <div className="kart-btn"  onClick={() => {onAddtoKart(id); navigate("/kart")}}>
-                    <h6 className="heading-6">ADD TO CART</h6>
+                    <span>ADD TO CART</span>
                   </div>
-
+                  <div className="wish-btn">
+                    <ul>
+                      <li className="save">Save</li>
+                      <li className="share">Share</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="column-wrapper">
-            <h3 className="title">{title}</h3>
             <div className="col-six">
+            <div className="title"><h3>{title}</h3></div>
               <h5>Description</h5>
               <p>{description}</p>
             </div>
-            <div className="col-four">
-              <h5>Details</h5>
-              <ul>
-                <li><span>Sweat-wicking</span></li>
-                <li><span>Breathable</span></li>
-                <li><span>Lightweight fabric</span></li>
-                <li><span>69% nylon, 31% lycra</span></li>
-              </ul>
-            </div>
           </div>
-        </>
-        }
-      </Container>
+      </Container>}
     </section>
   )
 }

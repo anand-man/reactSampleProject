@@ -25,7 +25,7 @@ export default function ProductKart() {
   }
 
   const moreOption = () => {
-    const kartBtnWrapper = document.querySelector(".kart-btn");
+    const kartBtnWrapper = document.querySelector(".kart-option");
     kartBtnWrapper.classList.toggle("show");
     kartBtnWrapper.childNodes[0].childNodes.forEach((item) => {
       item.addEventListener("click", () => {
@@ -67,7 +67,7 @@ export default function ProductKart() {
                         <span className={totalItem < 10 ? "increase" : "increase disabled"} onClick={() => onIncreaseItem(id)}>+</span>
                       </div>
                     </div>
-                    <div className="kart-btn">
+                    <div className="kart-option">
                       <ul>
                         <li className="edit">Edit item</li>
                         <li className="remove" onClick={() => removeProductFromKart(id)}>Remove</li>
@@ -90,8 +90,8 @@ export default function ProductKart() {
               <li>Estimated shipping <span>FREE</span></li>
               <li>Estimated Total <span>&#8377; {(totalPrice - 54.32 - 100 + 23.28).toFixed(2)}</span></li>
             </ul>
-            <h6 className="heading-6 checkout"><span>CHECKOUT</span></h6>
-            <h6 className="heading-6 pay-pal"><span>PAY PAL</span></h6>
+            <div className="kart-btn checkout"><span>CHECKOUT</span></div>
+            <div className="kart-btn pay-pal"><span>PAY PAL</span></div>
           </div>
         </div>}
       </Container>
