@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Container from "../commons/Container";
 import ProductOffer from "./ProductOffer";
 import { removeItem, increaseItem, decreaseItem } from "../../store/action";
+import Pricing from "./Pricing";
 
 export default function ProductKart() {
 
@@ -35,12 +36,9 @@ export default function ProductKart() {
   }
 
   const removeProductFromKart = (id) => {
+    if(!window.confirm("Do you really want to remove this product?")){ return};
     dispatch(removeItem(id));
   }
-
-  const totalPrice = productsInKart.reduce((currentPrice, item) => {
-    return currentPrice + (+item.price * +item.totalItem) * 77;
-  }, 0)
 
   return (
     <section className="product-kart">
@@ -81,17 +79,7 @@ export default function ProductKart() {
             <ProductOffer/>
           </div>
           <div className="col-four">
-            <h5>Pricing Summary</h5>
-            <ul>
-              <li>Subtotal <span>&#8377; {totalPrice.toFixed(2)}</span></li>
-              <li>Coupon <span>- &#8377; 77.60</span></li>
-              <li>Gift Card <span>- &#8377; 100.00</span></li>
-              <li>Estimated tax <span>&#8377; 23.28</span></li>
-              <li>Estimated shipping <span>FREE</span></li>
-              <li>Estimated Total <span>&#8377; {(totalPrice - 54.32 - 100 + 23.28).toFixed(2)}</span></li>
-            </ul>
-            <div className="kart-btn checkout"><span>CHECKOUT</span></div>
-            <div className="kart-btn pay-pal"><span>PAY PAL</span></div>
+            <Pricing/>
           </div>
         </div>}
       </Container>

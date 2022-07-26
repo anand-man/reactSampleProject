@@ -12,12 +12,13 @@
 @import "./sections/product-kart.scss";
 @import "./sections/product-offer.scss";
 @import "./sections/footer.scss";
+@import "./sections/product-checkout.scss";
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'muli', sans-serif;
+    font-family: $font-family-proxima-muli;
   }
   
   h1,

@@ -6,6 +6,7 @@ import {Routes, Route} from "react-router-dom";
 import ProductDetails from "./components/Product/ProductDetails";
 import ProductKart from "./components/Kart/ProductKart";
 import SecondLevelBanner from "./components/Second Level Banner/SecondLevelBanner";
+import CheckoutHandler from "./components/Checkout/CheckoutHandler";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element= {<><SecondLevelBanner/><Products/></> }/>
         <Route path="/products/:category/:productId" element= {<ProductDetails/>}/>
         <Route path="/kart" element= {<ProductKart/>}/>
+        <Route path ="/checkout" element = {<CheckoutHandler/>} />
       </Routes>
       <Footer/>
     </>

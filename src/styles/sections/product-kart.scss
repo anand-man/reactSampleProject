@@ -26,6 +26,7 @@ section{
       }
     }
     h1{
+      font-family: $font-family-proxima-serif;
       color: $unnamed-color-172026;
       position: relative;
       text-align: center;
@@ -37,7 +38,7 @@ section{
         position: absolute;
         width: 102px;
         height: 8px;
-        bottom: -10px;
+        bottom: -22px;
         left: 50%;
         background-color: $primary-brand;
         transform: translateX(-50%);
@@ -126,36 +127,12 @@ section{
           }
           
           #productQuantity{
-            font-size: $font-size-16;
-            font-weight: 600;
             width: 88px;
-            padding: 11px 0;
-            margin: 0 12px;
-            border: 2px solid $gray-m1;
-            border-radius: 8px;
-            text-align: center;
             @include phone-down{
               width: 80px;
             }
             @include phone-small{
               width: 70px;
-            }
-          }
-          .decrease, .increase{
-            display: block;
-            font-size: $font-size-28;
-            font-weight: 600;
-            color: $gray-m1;
-            width: 32px;
-            height: 32px;
-            border: 2px solid $gray-m1;
-            border-radius: 50%;
-            text-align: center;
-            cursor: pointer;
-
-            &.disabled{
-              pointer-events: none;
-              background-color: $gray-l4;
             }
           }
         }
@@ -240,6 +217,7 @@ section{
 
       .kart-btn{
           max-width: 247px;
+          height: 40px;
           margin: 24px auto auto;
           &.checkout{
             background: $primary-brand url("../../../public/Images/smile.svg") no-repeat 58px 8px;

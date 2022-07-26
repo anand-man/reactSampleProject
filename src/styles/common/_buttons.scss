@@ -2,89 +2,55 @@
 
 // Edit default button style here
 
-// %btn-default{
-//   display: inline-block;
-//   font-size: $font-size-14;
-//   line-height: $line-spacing-17;
-//   padding: 11px 40px;
-//   border: 1px solid $oxford-blue-354e57;
-//   color: $rangitoto-2e2e22;
-//   font-weight: bold;
-//   text-decoration: none;
-//   cursor: pointer;
-//   transition: all ease-out 0.3s;
+#productQuantity{
+  font-size: $font-size-16;
+  font-weight: 600;
+  width: 111px;
+  padding: 11px 0;
+  margin: 0 12px;
+  border: 2px solid $gray-m1;
+  border-radius: 8px;
+  text-align: center;
+  @include phone-down{
+    width: 169px;
+  }
+}
 
-//   &:hover{
-//     background-color: $white-ffffff;
-//   }
-// }
+.decrease, .increase{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $font-size-28;
+  font-weight: 600;
+  color: $gray-m1;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  border: 2px solid $gray-m1;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
 
-// .btn-default{
-//   @extend %btn-default;
-// }
-
-// .btn-white{
-//   @extend %btn-default;
-//   border: 1px solid $white-ffffff;
-//   color: $beige-f7f5e6;
-
-//   &:hover{
-//     color: $black-000000;
-//   }
-// }
-
-// .btn-light-black{
-//   @extend %btn-default;
-//   border-color: $light-palliser-956a53;
-//   color: $rangitoto-2e2e22;
-// }
-
-// .btn-with-icon {
-//   position: relative;
-//   display: inline-block;
-//   font-size: $font-size-12;
-//   color: $rangitoto-2e2e22;
-//   line-height: 15px;
-//   padding: 8px 30px;
-//   min-width: 251px;
-//   text-align: center;
-//   border: 1px solid $oxford-blue-354e57; 
-//   cursor: pointer;
-//   transition: all ease-out 0.3s;
-
-//   span{
-//     position: relative;
-
-//     &::before {
-//       content: "";
-//       display: block;
-//       position: absolute;
-//       width: 13px;
-//       height: 9px;
-//       left: -16px;
-//       top: 0;
-//       background: url("../../images/cart-outline.svg") no-repeat;
-//       transition: all ease-out 0.3s;
-//     }
-//   }
-
-//   &:hover{
-//     background-color: $white-ffffff;
-//   }
-// }
+  &.disabled{
+    pointer-events: none;
+    background-color: $gray-l4;
+  }
+}
 
 .kart-btn{
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 40px;
   max-width: 318px;
   text-transform: capitalize;
   color: $white;
   background-color: $primary-brand;
-  padding: 14px 0 9px;
   cursor: pointer;
   span{
+    display: block;
+    padding: 15px 0 9px;
     font-size: 14px;
     line-height: $line-spacing-16;
     font-weight: bold;

@@ -23,6 +23,7 @@ section {
     }
     h3{
       font-size: $font-size-36;
+      font-family: $font-family-proxima-serif;
       line-height: $line-spacing-45;
       margin: 38px 0 8px;
       font-weight: 600;
@@ -369,56 +370,7 @@ section {
             width: 100%;
             justify-content: center;
           }
-          
-          #productQuantity{
-            font-size: $font-size-16;
-            font-weight: 600;
-            width: 111px;
-            padding: 11px 0;
-            margin: 0 12px;
-            border: 2px solid $gray-m1;
-            border-radius: 8px;
-            text-align: center;
-            @include phone-down{
-              width: 169px;
-            }
-          }
 
-          .decrease, .increase{
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: $font-size-28;
-            font-weight: 600;
-            color: $gray-m1;
-            width: 32px;
-            height: 32px;
-            border: 2px solid $gray-m1;
-            border-radius: 50%;
-            text-align: center;
-            cursor: pointer;
-
-            &.disabled{
-              pointer-events: none;
-              background-color: $gray-l4;
-            }
-          }
-        }
-        .kart-btn{
-          max-width: 318px;
-          text-align: center;
-          color: $white;
-          background-color: $primary-brand;
-          padding: 14px 0 9px;
-          border-radius: 28px;
-          cursor: pointer;
-          @include phone-down{
-            max-width: 311px;
-            margin: auto;
-          }
-          h6{
-            font-weight: bold;
-          }
         }
         .wish-btn{
           max-width: 318px;
