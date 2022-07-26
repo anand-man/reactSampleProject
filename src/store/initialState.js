@@ -6,5 +6,6 @@ export const initialState = {
   productAttr: productAttr,
   productsInKart: [],
   loadingMsg: "Please wait while we are loading the products for you! :)",
-  error: ""
+  error: "",
+  contactInfo: []
 }

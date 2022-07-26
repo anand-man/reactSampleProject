@@ -4,11 +4,13 @@ import Container from "../commons/Container";
 import ProductOffer from "./ProductOffer";
 import { removeItem, increaseItem, decreaseItem } from "../../store/action";
 import Pricing from "./Pricing";
+import { useNavigate } from "react-router";
 
 export default function ProductKart() {
 
   const { productsInKart } = useSelector(state => state.kartData);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onIncreaseItem = (id) => {
     const item = document.getElementById("productQuantity").textContent;
@@ -80,6 +82,8 @@ export default function ProductKart() {
           </div>
           <div className="col-four">
             <Pricing/>
+            <div className="kart-btn kart-btn-with-icon" onClick={() => navigate("/checkout")}><span>CHECKOUT</span></div>
+            <div className="kart-btn pay-pal"><span>PAY PAL</span></div>
           </div>
         </div>}
       </Container>

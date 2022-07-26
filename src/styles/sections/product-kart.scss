@@ -187,7 +187,6 @@ section{
       padding: 32px 28px 40px 32px;
       box-shadow: 0px 0px 8px #0000000D;
       border: 1px solid #D1D3D6;
-      border-radius: 2px;
       @include desktop-down{
         padding: 24px 0 0;
         border: none;
@@ -196,38 +195,35 @@ section{
       @include tablet-down{
         width: 100%;
       }
-      ul{
-        padding: 24px 0 0;
-        li{
-          font-size: $font-size-16;
-          line-height: $line-spacing-24;
-          margin-bottom: 16px;
-          &:last-of-type{
-            font-weight: bold;
-          }
-          span{
-            float: right;
-          }
-        }
-      }
-
-      h5{
-        margin-bottom: 0;
-      }
-
       .kart-btn{
           max-width: 247px;
           height: 40px;
           margin: 24px auto auto;
-          &.checkout{
-            background: $primary-brand url("../../../public/Images/smile.svg") no-repeat 58px 8px;
-          }
-
           &.pay-pal{
             text-indent: -9999px;
             background: url("../../../public/Images/pp-btn.png") no-repeat;
           }
       }
     }
+  }
+}
+
+.product-kart__pricing{
+  ul{
+    padding: 24px 0 0;
+    li{
+      font-size: $font-size-16;
+      line-height: $line-spacing-24;
+      margin-bottom: 16px;
+      &:last-of-type{
+        font-weight: bold;
+      }
+      span{
+        float: right;
+      }
+    }
+  }
+  h5{
+    margin-bottom: 0;
   }
 }

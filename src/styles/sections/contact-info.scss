@@ -1,0 +1,68 @@
+.contact-info{
+  p,label, h2, h5{
+    color: $unnamed-color-172026;
+  }
+  h5{
+    font-size: $font-size-20;
+    line-height: $line-spacing-24;
+    font-weight: $font-weight-bold;
+    margin: 0 0 8px 0;
+  }
+  .wrapper{
+    flex-direction: column-reverse;
+    width: calc(50% - 32px);
+    margin: 0 16px;
+    padding: 8px 0;
+    justify-content: flex-start;
+    &.zip{
+      width: 128px;
+    }
+  }
+  input, select{
+    width: 100%;
+    max-width: 436px;
+    height: 44px;
+    padding: 11px 12px;
+    font-size: $font-size-16;
+    color: $gray-d2;    
+    border: 2px solid $gray-l2;
+    border-radius: 8px;
+    outline: none;
+    &:focus{
+      border-color: $primary-brand1;
+    }
+    
+  }
+    .select-country{
+      width: calc(50% - 32px);
+      margin: 16px 17px 32px 16px;
+    }
+    .select-state{
+      width: 274px;
+      padding: 8px 0;
+      select{
+        width: 100%;
+        option{
+          padding: 10px
+        }
+      }
+    }
+}
+.contact-info__email-phone, .contact-info__shiping-info{
+  @include flex(calc(100% + 32px));
+  margin: 0 -16px;
+  label, p{
+    width: 100%;
+    font-size: $font-size-16;
+    line-height: $line-spacing-24;
+    margin-bottom: 4px;
+  }
+  h5{
+    margin: 0 0 8px 16px;
+    width: 100%;
+  }
+}
+.contact-info__email-phone{
+  padding: 8px 0 32px;
+
+}

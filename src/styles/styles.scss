@@ -13,6 +13,8 @@
 @import "./sections/product-offer.scss";
 @import "./sections/footer.scss";
 @import "./sections/product-checkout.scss";
+@import "./sections/contact-info.scss";
+@import "./sections/shiping-method.scss";
 
 * {
     margin: 0;
@@ -35,7 +37,7 @@
   }
   
   .container {
-    max-width: 1411px;
+    max-width: 1413px;
     padding: 0 20px;
     margin: auto;
     position: relative;

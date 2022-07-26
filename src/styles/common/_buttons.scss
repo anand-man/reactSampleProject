@@ -48,11 +48,46 @@
   color: $white;
   background-color: $primary-brand;
   cursor: pointer;
+  transition: all ease-out 0.3s;
   span{
     display: block;
     padding: 15px 0 9px;
     font-size: 14px;
     line-height: $line-spacing-16;
     font-weight: bold;
+  }
+  &:hover{
+    background-color: $primary-d1;
+  }
+}
+
+.kart-btn-with-icon{
+  background: $primary-brand url("../../../public/Images/smile.svg") no-repeat 58px 8px;
+  &:hover{
+    background: $primary-d1 url("../../../public/Images/smile.svg") no-repeat 58px 8px;
+  }
+}
+
+.btn-secondry{
+  display: block;
+  min-width: 160px;
+  height: 40px;
+  background-color: $white;
+  color: $primary-brand;
+  border: 2px solid $primary-brand;
+  cursor: pointer;
+  transition: all ease-out 0.3s;
+  span{
+    display: inline-flex;
+    justify-self: center;
+    align-self: center;
+    font-size: $font-size-14;
+    font-weight: $font-weight-bold;
+    line-height: $line-spacing-16;
+    padding: 11px 57px 9px;
+  }
+  &:hover{
+    border-color: $primary-d1;
+    color: $primary-d1;
   }
 }
