@@ -12,7 +12,8 @@ export default function CheckoutHandler() {
     paymentInfo: false
   });
 
-  const onContactSave = () => {
+  const onContactSave = (event) => {
+    event.preventDefault();
     setCheckoutAttr((prevState) => ({
       ...prevState,
       contactInfo: false,

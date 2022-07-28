@@ -7,5 +7,5 @@ export const initialState = {
   productsInKart: [],
   loadingMsg: "Please wait while we are loading the products for you! :)",
   error: "",
-  contactInfo: []
+  checkoutData: []
 }

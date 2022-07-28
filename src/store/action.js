@@ -59,3 +59,10 @@ export const decreaseItem = (id) => {
         payload: id
     }
 }
+
+export const addCusAddress = (data) => {
+    return {
+        type: type.CUS_ADDRESS,
+        payload: data
+    }
+}

@@ -1,4 +1,6 @@
 import React, { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addCusAddress } from "../../store/action";
 import CountrySelector from "../commons/CountrySelector";
 import Input from "../commons/Input";
 import StateSelector from "../commons/StateSelector";
@@ -6,6 +8,7 @@ import StateSelector from "../commons/StateSelector";
 export default function Contact(props) {
 
 const [countryCode, setCountryCode] = useState("");
+const dispatch = useDispatch();
 
 const [contactInfo, setContactInfo] = useState({
   email: "",
@@ -52,9 +55,16 @@ const onChangeHandler = (event) => {
   }))
 }
 
+const checkoutData = {
+  customerId: "cus01",
+  contactInfo: contactInfo,
+  paymentMethod: "",
+  shippingMethod: ""
+}
 const submitContact = (event) => {
   event.preventDefault();
-  console.log(contactInfo);
+  // console.log(contactInfo);
+  dispatch(addCusAddress(checkoutData));
 }
 
 
@@ -62,7 +72,7 @@ const submitContact = (event) => {
     <div className="contact-info">
       <h5>Contact information</h5>
       <p>We’ll use these details to keep you informed on your delivery.</p>
-      <form onSubmit={submitContact}>
+      <form onSubmit={(event) => (submitContact(event), props.onContactSave(event))}>
       <div className="contact-info__email-phone">
         <Input ref = {emailRef} className = "wrapper" input= {{type: "email", id: "email", placeholder: "abc@xyz.com", name: "email", value: contactInfo.email, onChange: onChangeHandler}} label = "Email"/>
         <Input ref= {phoneRef} className = "wrapper" input= {{type: "number", id: "phone", placeholder: "(222) 222-2222", value: contactInfo.contactNo, onChange: onChangeHandler }} label = "Phone Number"/>
