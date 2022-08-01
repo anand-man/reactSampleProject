@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Container from "../commons/Container";
 import Pricing from "../Kart/Pricing";
 import Contact from "./Contact";
+import PaymentMethod from "./PaymentMethod";
 import ShipingMethod from "./ShipingMethod";
 
 export default function CheckoutHandler() {
+
+  
+  const store = useSelector(state => state.checkoutData);
+
+  console.log(store.checkoutData);
 
   const [checkoutAttr, setCheckoutAttr] = useState({
     contactInfo: true,
@@ -21,7 +28,16 @@ export default function CheckoutHandler() {
     }));
   }
 
-  const onShipingSave = () => {
+  const editContact= (event) => {
+    event.preventDefault();
+    setCheckoutAttr((prevState) => ({
+      ...prevState,
+      contactInfo: true,
+    }));
+  }
+
+  const onShipingSave = (event) => {
+    event.preventDefault();
     setCheckoutAttr((prevState) => ({
       ...prevState,
       shipingMethod: false,
@@ -32,7 +48,7 @@ export default function CheckoutHandler() {
   const onPaymentSave = () => {
     setCheckoutAttr((prevState) => ({
       ...prevState,
-      shipingMethod: false
+      paymentInfo: false
     }));
   }
 
@@ -44,15 +60,15 @@ export default function CheckoutHandler() {
         <div className="col-seven">
           <h2>Guest Checkout</h2>
           <div className="product-checkout--contact">
-          {checkoutAttr.contactInfo && <Contact onContactSave = {onContactSave}/>}
+          <Contact onEdit = {editContact} onContactSave = {onContactSave} notification = {checkoutAttr.contactInfo}/>
           </div>
           <div className="product-checkout--shiping-method">
-            {!checkoutAttr.shipingMethod && <h5>2. Shipping Method</h5>}
-            {checkoutAttr.shipingMethod && <><ShipingMethod onShipingSave = {onShipingSave}/>
-            <button className="btn-secondry" onClick={onShipingSave}><span>CONTINUE TO PAYMENT</span></button></>}
+            {/* {!checkoutAttr.shipingMethod && <h5 className={checkoutAttr.shipingMethod && "hide"}>2. Shipping Method</h5>} */}
+            <ShipingMethod onShipingSave = {onShipingSave} shippingData = {{notification: checkoutAttr.shipingMethod}}/>
           </div>
           <div className="product-checkout--payment-info">
-            <h5>3. Payment Information</h5>
+            {!checkoutAttr.paymentInfo && <h5>3. Payment Information</h5>}
+            <PaymentMethod notification = {checkoutAttr.paymentInfo} onPaymentSave = {onPaymentSave} />
           </div>
         </div>
         <div className="col-three">

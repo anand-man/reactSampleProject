@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCusAddress } from "../../store/action";
 import CountrySelector from "../commons/CountrySelector";
 import Input from "../commons/Input";
@@ -8,19 +8,26 @@ import StateSelector from "../commons/StateSelector";
 export default function Contact(props) {
 
 const [countryCode, setCountryCode] = useState("");
+
+const store = useSelector(state => state.checkoutData);
+// console.log(store.checkoutData);
+
 const dispatch = useDispatch();
 
+const [contactDataShow, setcontactDataShow] = useState(false);
+
+const {email, contactNo, firstName, secondName, streetAdd1, streetAdd2, city, state, zipCode} = store.contactInfo ? store.contactInfo : "";
 const [contactInfo, setContactInfo] = useState({
-  email: "",
-  contactNo: "",
+  email: email,
+  contactNo: contactNo,
   country: "",
-  firstName: "", 
-  secondName: "",
-  streetAdd1: "",
-  streetAdd2: "",
-  city: "",
-  state: "",
-  zipCode: ""
+  firstName: firstName, 
+  secondName: secondName,
+  streetAdd1: streetAdd1,
+  streetAdd2: streetAdd2,
+  city: city,
+  state: state,
+  zipCode: zipCode
 });
 
 const emailRef = useRef("");
@@ -57,20 +64,28 @@ const onChangeHandler = (event) => {
 
 const checkoutData = {
   customerId: "cus01",
-  contactInfo: contactInfo,
-  paymentMethod: "",
-  shippingMethod: ""
+  contactInfo,
 }
+
+const dataShow = () => {
+  setcontactDataShow(!contactDataShow);
+} 
+
+const onEdit = (event) => {
+  dataShow();
+  props.onEdit(event);
+}
+
 const submitContact = (event) => {
   event.preventDefault();
-  // console.log(contactInfo);
   dispatch(addCusAddress(checkoutData));
+  dataShow();
 }
 
 
   return (
     <div className="contact-info">
-      <h5>Contact information</h5>
+      {props.notification && <><h5>Contact information</h5>
       <p>We’ll use these details to keep you informed on your delivery.</p>
       <form onSubmit={(event) => (submitContact(event), props.onContactSave(event))}>
       <div className="contact-info__email-phone">
@@ -89,9 +104,10 @@ const submitContact = (event) => {
         <Input ref= {zipCodeRef} className = "wrapper zip" input= {{type: "number", id: "zipCode", value: contactInfo.zipCode, onChange: onChangeHandler}} label = "ZIP"/>
       </div>
       <button className="btn-secondry"><span>CONTINUE TO SHIPPING METHOD</span></button>
-      </form>
+      </form> </>}
+      {contactDataShow && <div className="contact-info__contact-data">
+      <p onClick={event => onEdit(event)}>edit</p>
+        </div>}
     </div>
-    // value = {contactInfo.country} onChange =  {onChangeHandler}
-    // value= {contactInfo.state} onChange= {onChangeHandler}
   )
 }

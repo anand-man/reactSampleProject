@@ -1,0 +1,90 @@
+.payment-method__option{
+    padding: 15px 0;
+    border: 1px solid;
+    border-color: $gray-l3 transparent $gray-l3 transparent;
+    margin-top: 15px;
+    
+    &.credit-card{
+      margin: 0;
+      padding: 12px 0;
+      border-color: transparent;
+    }
+    &.pay-pal{
+      margin: 0 0 40px;
+      padding: 12px 0;
+      border-color: transparent transparent $gray-l3 transparent;
+
+      p{
+        padding: 30px 0
+      }
+    }
+}
+.payment-method__text-input{
+  @include flex(100%);
+  max-width: 448px;
+  .wrapper{
+    width: 100%;
+    margin: 0;
+    input{
+      max-width: 100%;
+    }
+    label{
+      font-weight: 600;
+    }
+  }
+  label{
+    color: $gray-d2;
+    width: 100%;
+    font-size: $font-size-16;
+    line-height: $line-spacing-24;
+    margin-bottom: 4px;
+  }
+}
+.product-checkout--payment-info{
+  .payment-method{
+    h5{
+      padding: 0;
+      border: none;
+      color: $unnamed-color-172026;
+    }
+  }
+}
+.payment-method--card-exp{
+  max-width: 288px;
+}
+.payment-method--card-cvv{
+  @include flex(100%);
+  align-items: center;
+  max-width: 138px;
+  .wrapper{
+    width: 109px;
+  }
+  span{
+    display: inline-flex;
+    align-self: center;
+    width: 21px;
+    height: 21px;
+    color: $primary-brand2;
+    font-size: 20px;
+    padding: 0px 4px;
+    margin: 0 0 -4px;
+    font-weight: $font-weight-bold;
+    border: 2px solid $primary-brand2;
+    border-radius: 50%;
+  }
+}
+.payment-method__check-input{
+  margin-top: 20px;
+  .wrapper{
+    justify-content: flex-start;
+    label{
+      margin: 4px 0 0 16px;
+    }
+  }
+}
+.payment-method__payment-data{
+  width: 100%;
+  border: 1px solid $gray-d2;
+  height: 200px;
+  margin: 16px 0 32px;
+}

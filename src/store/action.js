@@ -66,3 +66,17 @@ export const addCusAddress = (data) => {
         payload: data
     }
 }
+
+export const addShippingMethod = (data) => {
+    return {
+        type: type.SHIPPING_METHOD,
+        payload: data
+    }
+}
+
+export const addPaymentInfo = (data) => {
+    return {
+         type: type.PAYMENT_METHOD,
+         payload: data
+    }
+}

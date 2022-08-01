@@ -1,4 +1,4 @@
-.contact-info{
+.contact-info, .payment-method__text-input{
   p,label, h2, h5{
     color: $unnamed-color-172026;
   }
@@ -65,4 +65,10 @@
 .contact-info__email-phone{
   padding: 8px 0 32px;
 
+}
+.contact-info__contact-data{
+  width: 100%;
+  border: 1px solid $gray-d2;
+  height: 200px;
+  margin: 0 0 32px;
 }

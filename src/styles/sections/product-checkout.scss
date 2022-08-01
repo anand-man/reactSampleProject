@@ -91,5 +91,8 @@
 .product-checkout--shiping-method{
   h5{
     border-top: none;
+    &.hide{
+      display: none;
+    }
   }
 }
