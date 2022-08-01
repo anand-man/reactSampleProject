@@ -96,3 +96,32 @@
     }
   }
 }
+
+.contact-info__contact-data--title, .shipping-method__shipping-data--title, .payment-method__payment-data--title{
+  @include flex(100%);
+  padding: 0 0 16px;
+  h6{
+    font-size: $font-size-16;
+    font-weight: $font-weight-bold;
+    line-height: $line-spacing-20;
+  }
+  p{
+    font-size: $font-size-16;
+    line-height: $line-spacing-22;
+    color: $primary-brand;
+    font-weight: 500;
+    position: relative;
+    cursor: pointer;
+
+    &::before{
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 0;
+      left: -23px;
+      background: url("../../../public/Images/edit-orange.svg") no-repeat;
+      background-size: 100%;
+    }
+  }
+}

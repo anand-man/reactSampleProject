@@ -1,7 +1,7 @@
 import React, { useState} from "react";
 import {useSelector } from "react-redux";
 import Container from "../commons/Container";
-import Input from "../commons/Input";
+import InputBox from "../commons/Input";
 import { Link } from "react-router-dom";
 
 export default function Products() {
@@ -195,10 +195,10 @@ export default function Products() {
               <h5 className="heading-5">Filters</h5>
               <p>Category</p>
               <ul>
-                <li><Input input={{ id: "womenClothing", type: "checkbox", value: "women's clothing", onChange: onChangeFilter }} className="wrapper" label="Women's Clothing" /></li>
-                <li><Input input={{ id: "mensClothing", type: "checkbox", value: "men's clothing", onChange: onChangeFilter }} className="wrapper" label="Men's Clothing" /></li>
-                <li><Input input={{ id: "jewelery", type: "checkbox", value: "jewelery", onChange: onChangeFilter }} className="wrapper" label="Jewelery" /></li>
-                <li><Input input={{ id: "electronics", type: "checkbox", value: "electronics", onChange: onChangeFilter }} className="wrapper" label="Electronics" /></li>
+                <li><InputBox input={{ id: "womenClothing", type: "checkbox", value: "women's clothing", onChange: onChangeFilter }} className="wrapper" label="Women's Clothing" /></li>
+                <li><InputBox input={{ id: "mensClothing", type: "checkbox", value: "men's clothing", onChange: onChangeFilter }} className="wrapper" label="Men's Clothing" /></li>
+                <li><InputBox input={{ id: "jewelery", type: "checkbox", value: "jewelery", onChange: onChangeFilter }} className="wrapper" label="Jewelery" /></li>
+                <li><InputBox input={{ id: "electronics", type: "checkbox", value: "electronics", onChange: onChangeFilter }} className="wrapper" label="Electronics" /></li>
               </ul>
               <div className="close-btn" onClick={onFilterClick}><span>close</span></div>
             </div>

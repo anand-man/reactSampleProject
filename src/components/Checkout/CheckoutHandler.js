@@ -36,6 +36,22 @@ export default function CheckoutHandler() {
     }));
   }
 
+  const editShipping= (event) => {
+    event.preventDefault();
+    setCheckoutAttr((prevState) => ({
+      ...prevState,
+      shipingMethod: true,
+    }));
+  }
+
+  const editPayment= (event) => {
+    event.preventDefault();
+    setCheckoutAttr((prevState) => ({
+      ...prevState,
+      paymentInfo: true,
+    }));
+  }
+
   const onShipingSave = (event) => {
     event.preventDefault();
     setCheckoutAttr((prevState) => ({
@@ -60,15 +76,15 @@ export default function CheckoutHandler() {
         <div className="col-seven">
           <h2>Guest Checkout</h2>
           <div className="product-checkout--contact">
-          <Contact onEdit = {editContact} onContactSave = {onContactSave} notification = {checkoutAttr.contactInfo}/>
+          <Contact onEdit = {editContact} onContactSave = {onContactSave} notification = {checkoutAttr.contactInfo} conDatas = {store.checkoutData.contactInfo} />
           </div>
           <div className="product-checkout--shiping-method">
-            {/* {!checkoutAttr.shipingMethod && <h5 className={checkoutAttr.shipingMethod && "hide"}>2. Shipping Method</h5>} */}
-            <ShipingMethod onShipingSave = {onShipingSave} shippingData = {{notification: checkoutAttr.shipingMethod}}/>
+            {!checkoutAttr.shipingMethod && <h5 className={checkoutAttr.shipingMethod ? "hide" : ""}>2. Shipping Method</h5>}
+            <ShipingMethod onEdit = {editShipping} onShipingSave = {onShipingSave} shippingData = {{notification: checkoutAttr.shipingMethod, data: store.checkoutData.shipingMethod}}/>
           </div>
           <div className="product-checkout--payment-info">
             {!checkoutAttr.paymentInfo && <h5>3. Payment Information</h5>}
-            <PaymentMethod notification = {checkoutAttr.paymentInfo} onPaymentSave = {onPaymentSave} />
+            <PaymentMethod onEdit = {editPayment} notification = {checkoutAttr.paymentInfo} onPaymentSave = {onPaymentSave} payData = {store.checkoutData.paymentInfo}/>
           </div>
         </div>
         <div className="col-three">

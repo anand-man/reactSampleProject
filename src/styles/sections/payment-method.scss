@@ -83,8 +83,20 @@
   }
 }
 .payment-method__payment-data{
-  width: 100%;
-  border: 1px solid $gray-d2;
-  height: 200px;
+  @include flex(100%);
+  justify-content: flex-start;
+  border: 1px solid $gray-l3;
+  border-radius: 2px;
+  padding: 24px 32px 24px 24px;
   margin: 16px 0 32px;
+}
+
+.payment-method__payment-data--pay-info{
+  ul{
+    li{
+      font-size: $font-size-16;
+      line-height: $line-spacing-24;
+      color: $gray-d1;
+    }
+  }
 }

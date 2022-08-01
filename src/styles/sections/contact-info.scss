@@ -17,6 +17,11 @@
     &.zip{
       width: 128px;
     }
+
+    span{
+      float: right;
+      color: $gray-d;
+    }
   }
   input, select{
     width: 100%;
@@ -43,8 +48,16 @@
       select{
         width: 100%;
         option{
-          padding: 10px
+          padding: 10px;
         }
+      }
+    }
+
+    ul{
+      li{
+        font-size: $font-size-16;
+        line-height: $line-spacing-24;
+        color: $gray-d1;
       }
     }
 }
@@ -67,8 +80,47 @@
 
 }
 .contact-info__contact-data{
-  width: 100%;
-  border: 1px solid $gray-d2;
-  height: 200px;
-  margin: 0 0 32px;
+  @include flex(100%);
+  justify-content: flex-start;
+  border: 1px solid $gray-l3;
+  border-radius: 2px;
+  padding: 24px 32px 24px 24px;
+  margin: 0 0 16px;
+}
+.contact-info__contact-data--title{
+  @include flex(100%);
+  padding: 0 0 16px;
+  h6{
+    font-size: $font-size-16;
+    font-weight: $font-weight-bold;
+    line-height: $line-spacing-20;
+  }
+  p{
+    font-size: $font-size-16;
+    line-height: $line-spacing-22;
+    color: $primary-brand;
+    font-weight: 500;
+    position: relative;
+    cursor: pointer;
+
+    &::before{
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 0;
+      left: -23px;
+      background: url("../../../public/Images/edit-orange.svg") no-repeat;
+      background-size: 100%;
+    }
+  }
+}
+.contact-info__contact-data--email-phone{
+  width: calc(34.1% + 120px);
+  margin-right: 120px;
+  max-width: 157px;
+}
+.contact-info__contact-data--name-address{
+  max-width: 220px;
+  padding: 0 20px 0 0;
 }

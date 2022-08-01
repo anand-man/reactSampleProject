@@ -1,7 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addPaymentInfo } from "../../store/action";
-import Input from "../commons/Input";
+import DateInput from "../commons/DateInput";
+import InputBox from "../commons/Input";
+import CardInput from "../commons/CardInput";
+import CvvInput from "../commons/CvvInput";
 
 export default function PaymentMethod(props) {
 
@@ -16,23 +19,28 @@ export default function PaymentMethod(props) {
   const [payInfo, setPayInfo] = useState({
     info: {
       nameOnCard: "",
-      cardNum: "",
+      cardNum: [],
       expDate: "",
       cvv: "",
+      payType: "Credit Card",
     },
     payAddress: ""
   });
 
   const nameOnCardRed = useRef();
-  const cardNumRef = useRef();
-  const expDateRef = useRef();
-  const cvvRef = useRef();
 
   const onCreditCard = () => {
     setPayMethod(prevState => ({
       ...prevState,
       payPal: false,
       creditCard: true
+    }));
+    setPayInfo(prevState => ({
+      ...prevState,
+      info: {
+        ...payInfo.info,
+        payType: "Credit Card"
+      }
     }));
   }
 
@@ -41,7 +49,14 @@ export default function PaymentMethod(props) {
       ...prevState,
       creditCard: false,
       payPal: true
-    }))
+    }));
+    setPayInfo(prevState => ({
+      ...prevState,
+      info: {
+        ...payInfo.info,
+        payType: "Pay Pal"
+      }
+    }));
   }
 
   const dataShow = () => {
@@ -61,17 +76,20 @@ export default function PaymentMethod(props) {
     }
   }
 
-  const onCardNumHandler = (event) => {
+
+  const getCardNum = (value) => {
     setPayInfo(prevState => ({
       ...prevState,
       info: {
         ...payInfo.info,
-        cardNum: cardNumRef.current.value
+        cardNum: value
       }
     }));
   }
 
-  const onCardNameHandler = (event) => {
+
+
+  const cardNameHandler = (event) => {
     setPayInfo(prevState => ({
       ...prevState,
       info: {
@@ -81,24 +99,30 @@ export default function PaymentMethod(props) {
     }));
   }
 
-  const onExpDateHandler = (event) => {
+  const getExpDate = (value) => {
     setPayInfo(prevState => ({
       ...prevState,
       info: {
         ...payInfo.info,
-        expDate: expDateRef.current.value
+        expDate: value
       }
     }));
   }
 
-  const onCvvHandler = (event) => {
+
+  const getCvv = (value) => {
     setPayInfo(prevState => ({
       ...prevState,
       info: {
         ...payInfo.info,
-        cvv: cvvRef.current.value
+        cvv: value
       }
     }));
+  }
+
+  const onEdit = (event) => {
+    dataShow(event);
+    props.onEdit(event);
   }
 
   const onSubmitPayment = (event) => {
@@ -116,6 +140,7 @@ export default function PaymentMethod(props) {
     dispatch(addPaymentInfo(payInfo))
   }
 
+  const {payType, cardNum} = props.payData ? props.payData.info : "";
 
   return (
     <div className="payment-method">
@@ -123,35 +148,54 @@ export default function PaymentMethod(props) {
       <form className="payment-form" onSubmit={(event) => (onSubmitPayment(event))}>
       <div className={payMethod.creditCard ? "payment-method__option credit-card": "payment-method__option"}>
       <div className="payment-method__radio-input">
-        <Input className = "wrapper radio-input" input= {{type: "radio", id: "creditCard", className: "payment-option", name: "paymentMethod", defaultChecked: "checked", onChange: onCreditCard}} label = "Credit Card"/>
+        <InputBox className = "wrapper radio-input" input= {{type: "radio", id: "creditCard", className: "payment-option", name: "paymentMethod", defaultChecked: "checked", onChange: onCreditCard}} label = "Credit Card"/>
       </div>
+
       {payMethod.creditCard && <> <div className="payment-method__text-input">
-        <Input ref={nameOnCardRed} className= "wrapper" input = {{type: "text", id: "nameOnCard", value: payInfo.nameOnCard, onChange: onCardNameHandler }} label = "Name on Card"/>
-        <Input ref = {cardNumRef} className= "wrapper" input = {{type: "text", id: "creditCardNo", value: payInfo.cardNum, onChange: onCardNumHandler }} label = "Credit Card Number"/>
-        <Input ref={expDateRef} className= "wrapper payment-method--card-exp" input = {{type: "text", id: "expData", value: payInfo.expDate, onChange: onExpDateHandler }} label = "Expiration Date"/>
+        <InputBox ref={nameOnCardRed} className= "wrapper" input = {{type: "text", id: "nameOnCard", value: payInfo.nameOnCard, onChange: cardNameHandler }} label = "Name on Card"/>
+
+        <div className="wrapper">
+          <CardInput input = {{type: "text", id: "creditCardNo", maxLength: 19}} getValue=  {getCardNum} label = "Credit Card Number"/>
+        </div>
+
+        <div className="wrapper payment-method--card-exp">
+          <DateInput input = {{type: "text", id: "expData", }} getValue=  {getExpDate} label = "Expiration Date"/>
+        </div>
+
         <div className="payment-method--card-cvv">
         <div className="wrapper">
-          <input ref={cvvRef} type = "number" value={payInfo.cvv}  id="cardCvv" onChange={onCvvHandler}/>
-          <label htmlFor="cardCvv">CVV</label>
+          <CvvInput input = {{type: "text", id: "cardCvv", }} getValue=  {getCvv} label = "CVV"/>
         </div>
         <span>?</span>
         </div>
         </div>
         <div className="payment-method__check-input">
-          <Input className= "wrapper check-input" input = {{type: "checkbox", id: "addVerification", value:"sameAsShipping", onChange: onPayAddCheck }} label = "Billing address same as shipping address"/>
+          <InputBox className= "wrapper check-input" input = {{type: "checkbox", id: "addVerification", value:"sameAsShipping", onChange: onPayAddCheck }} label = "Billing address same as shipping address"/>
         </div></>}
       </div>
       <div className={payMethod.payPal ? "payment-method__option pay-pal": "payment-method__option"}>
       <div className="payment-method__radio-input">
-        <Input className = "wrapper radio-input" input= {{type: "radio", id: "payPal", className: "payment-option", name: "paymentMethod", onChange: onPayPal}} label = "PayPal"/>
+        <InputBox className = "wrapper radio-input" input= {{type: "radio", id: "payPal", className: "payment-option", name: "paymentMethod", onChange: onPayPal}} label = "PayPal"/>
       </div>
       {payMethod.payPal && <div className="pay-pal-detail">
         <p>This services is available soon!</p>
       </div>}
       </div>
       <button className="btn-secondry"><span>CONTINUE TO REVIEW ORDER</span></button>
+
       </form></>}
-      {payMethod.status && <div className="payment-method__payment-data"></div>}
+      {payMethod.status && <div className="payment-method__payment-data">
+      <div className="payment-method__payment-data--title">
+        <h6>Payment Information</h6>
+          <p onClick={event => onEdit(event)}>Edit</p>
+        </div>
+        <div className="payment-method__payment-data--pay-info">
+          <ul>
+            <li>{payType}</li>
+            <li>Visa ending in {cardNum.slice(12, 16)}</li>
+          </ul>
+        </div>
+        </div>}
     </div> 
   )
 }

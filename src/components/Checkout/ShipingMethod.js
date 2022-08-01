@@ -1,20 +1,25 @@
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addShippingMethod } from "../../store/action";
-import Input from "../commons/Input";
+import InputBox from "../commons/Input";
 
 export default function ShipingMethod(props) {
 
   const dispatch = useDispatch();
 
   const [shippingDataShow, setShippingDataShow] = useState(true);
-  const [shippingMethod, setShippingMethod] = useState("");
+  const [shippingMethod, setShippingMethod] = useState(props.shippingData.value);
 
   const shippingRef = useRef();
 
   const dataShow = (event) => {
     event.preventDefault();
     setShippingDataShow(!props.shippingData.notification);
+  }
+
+  const onEdit = (event) => {
+    dataShow(event);
+    props.onEdit(event);
   }
 
   const onSubmit = (event) => {
@@ -30,20 +35,36 @@ export default function ShipingMethod(props) {
     props.onShipingSave(event); dataShow(event)
     setShippingMethod(method);
     dispatch(addShippingMethod(method));
-    console.log(method)
   }
 
+  // const shippingMtd = document.querySelector(".shipping");
+  // const {shippingMethod} = props.data ? props.data : "";
   return (
     <div className="shipping-method">
       {/* {!props.shippingData.notification && <h5>2. Shipping Method</h5>} */}
       {props.shippingData.notification && <form className="shipping" onSubmit={(event) => {onSubmit(event)}}> <div className="shipping-method__shipping-info">
         <h5>2. Shipping Method</h5>
-        <Input ref={shippingRef} className = "wrapper radio-input" input= {{type: "radio", id: "standard", name: "shipingMethod", value: "standard", defaultChecked: "checked"}} label = "Standard Shipping (4-8 business days via USPS) FREE"/>
-        <Input ref={shippingRef} className = "wrapper radio-input" input= {{type: "radio", id: "express", name: "shipingMethod", value: "express"}} label = "Express Delivery (2-5 business days via USPS) $17.95"/>
-        <Input ref={shippingRef} className = "wrapper radio-input" input= {{type: "radio", id: "nextDay", name: "shipingMethod", value: "nextDay"}} label = "Next Day Delivery (Next business days via FedEx) $53.61"/>
+        <InputBox ref={shippingRef} className = "wrapper radio-input" input= {{type: "radio", id: "standard", name: "shipingMethod", value: "standard", defaultChecked: "checked"}} boldTxt = "Standard Shipping" label = {`(4-8 business days via USPS) FREE`}/>
+        <InputBox ref={shippingRef} className = "wrapper radio-input" input= {{type: "radio", id: "express", name: "shipingMethod", value: "express", defaultChecked: false}} boldTxt = "Express Delivery" label = " (2-5 business days via USPS) $17.95"/>
+        <InputBox ref={shippingRef} className = "wrapper radio-input" input= {{type: "radio", id: "nextDay", name: "shipingMethod", value: "nextDay"}} boldTxt = "Next Day Delivery" label = " (Next business days via FedEx) $53.61"/>
       </div>
       <button className="btn-secondry"><span>CONTINUE TO PAYMENT</span></button></form>}
-      {!shippingDataShow && <div className="shipping-method__shipping-data"></div>}
+      {!shippingDataShow && <div className="shipping-method__shipping-data">
+        <div className="shipping-method__shipping-data--title">
+        <h6>Shipping Method</h6>
+          <p onClick={event => onEdit(event)}>Edit</p>
+        </div>
+        <div className="shipping-method__shipping-data--info">
+          <ul>
+            <li>{
+                shippingMethod === "standard" && "Standard Shipping" || shippingMethod === "express" && "Express Delivery" || shippingMethod === "nextDay" && "Next Day Delivery"
+              }</li>
+            <li>{
+                shippingMethod === "standard" && "Est. delivery in 4 - 8 business days FREE" || shippingMethod === "express" && "Est. delivery in 2-5 business days via USPS" || shippingMethod === "nextDay" && "Est. delivery in Next business days via FedEx"
+              }</li>
+          </ul>
+        </div>
+        </div>}
     </div>
   )
 }
