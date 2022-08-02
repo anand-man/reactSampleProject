@@ -121,13 +121,13 @@ export default function PaymentMethod(props) {
   }
 
   const onEdit = (event) => {
-    dataShow(event);
+    dataShow();
     props.onEdit(event);
   }
 
   const onSubmitPayment = (event) => {
     event.preventDefault();
-    const paymentContainer = document.querySelector(".payment-form");
+    const paymentContainer = document.querySelector(".payment-method__payment-form");
     const payment = paymentContainer.querySelectorAll(".payment-option");
     let method = "";
     payment.forEach((element) => {
@@ -142,10 +142,13 @@ export default function PaymentMethod(props) {
 
   const {payType, cardNum} = props.payData ? props.payData.info : "";
 
+  console.log(props.test)
+
   return (
     <div className="payment-method">
-       {props.notification && <><h5>3. Payment Information</h5>
-      <form className="payment-form" onSubmit={(event) => (onSubmitPayment(event))}>
+      {!payMethod.status && <h5 className={!props.notification ? "make-indicate" : ""}>3. Payment Information</h5>}
+       {props.notification && <>
+      <form className="payment-method__payment-form" onSubmit={(event) => (onSubmitPayment(event), props.reviewOrder(event))}>
       <div className={payMethod.creditCard ? "payment-method__option credit-card": "payment-method__option"}>
       <div className="payment-method__radio-input">
         <InputBox className = "wrapper radio-input" input= {{type: "radio", id: "creditCard", className: "payment-option", name: "paymentMethod", defaultChecked: "checked", onChange: onCreditCard}} label = "Credit Card"/>

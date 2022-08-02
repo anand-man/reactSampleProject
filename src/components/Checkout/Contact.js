@@ -102,12 +102,12 @@ const submitContact = (event) => {
   dispatch(addCusAddress(checkoutData));
   dataShow();
 }
-
+// console.log(props.notification.contactInfo || props.notification.contactEdit)
   return (
     <div className="contact-info">
-      {props.notification && <><h5>Contact information</h5>
+      {props.notification.contactInfo  && <><h5>Contact information</h5>
       <p>We’ll use these details to keep you informed on your delivery.</p>
-      <form onSubmit={(event) => (submitContact(event), props.onContactSave(event))}>
+      <form className="contact-info--contact-form" onSubmit={(event) => (submitContact(event), props.onContactSave(event))}>
       <div className="contact-info__email-phone">
         <InputBox  className = "wrapper" input= {{type: "email", id: "email", placeholder: "abc@xyz.com", name: "email", value: contactInfo.email, onChange: onEmailChange}} label = "Email"/>
         <div className="wrapper">
@@ -130,7 +130,7 @@ const submitContact = (event) => {
         <StateSelector countryCode = {countryCodeName.code} value= {contactInfo.state} onChange= {stateChangeHandler}/>
         <InputBox ref= {zipCodeRef} className = "wrapper zip" input= {{type: "number", id: "zipCode", value: contactInfo.zipCode, onChange: onChangeHandler}} label = "ZIP"/>
       </div>
-      <button className="btn-secondry"><span>CONTINUE TO SHIPPING METHOD</span></button>
+      <button className="btn-secondry"><span>{props.notification.contactEdit ? "CONTINUE TO REVIEW ORDER" : "CONTINUE TO SHIPPING METHOD"}</span></button>
       </form> </>}
       {contactDataShow && <div className="contact-info__contact-data">
         <div className="contact-info__contact-data--title">

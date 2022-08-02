@@ -85,6 +85,9 @@
     font-weight: $font-weight-bold;
     line-height: $line-spacing-16;
     padding: 11px 57px 9px;
+    @include phone-down{
+      padding: 11px 30px 9px;
+    }
   }
   &:hover{
     border-color: $primary-d1;

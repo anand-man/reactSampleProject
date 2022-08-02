@@ -12,7 +12,7 @@ const DateInput = (props) => {
     inputDate.current.value = !cardValue[2]
       ? cardValue[1]
       : `${cardValue[1]}/${cardValue[2]}`;
-    const numbers = inputDate.current.value.replace(/(\D)/g, '');
+    const numbers = inputDate.current.value.replace(/(\D)/g, '/');
     setCard(numbers);
     props.getValue(numbers);
   };

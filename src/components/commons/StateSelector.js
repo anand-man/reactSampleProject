@@ -14,6 +14,7 @@ const StateSelector = React.forwardRef((props, ref) => {
   return (
     <div className= "select-state">
       <p>State</p>
+      <span>carrot</span>
       <select ref={ref} onChange={(event) => {props.onChange(event); changeHandler(event)}} value = {value}>
       <option>Select State</option>
         {states.map((item, index) => {

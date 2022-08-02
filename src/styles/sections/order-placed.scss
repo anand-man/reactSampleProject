@@ -1,0 +1,26 @@
+.order-placed{
+  padding: 33px 0  40px;
+  @include desktop-down{
+    padding: 24px 0 40px;
+  }
+  h1{
+    color: $unnamed-color-172026;
+    font-family: $font-family-proxima-serif;
+    position: relative;
+    text-align: center;
+    @include tablet-down{
+      font-size: $font-size-36;
+    }
+     &::after{
+      content: "";
+      position: absolute;
+      width: 102px;
+      height: 8px;
+      bottom: -22px;
+      left: 50%;
+      background-color: $primary-brand;
+      transform: translateX(-50%);
+     }
+
+  }
+}

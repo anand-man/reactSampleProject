@@ -3,7 +3,9 @@
     border: 1px solid;
     border-color: $gray-l3 transparent $gray-l3 transparent;
     margin-top: 15px;
-    
+    @include tablet-down{
+      margin-top: 12px;
+    }
     &.credit-card{
       margin: 0;
       padding: 12px 0;
@@ -31,6 +33,15 @@
     label{
       font-weight: 600;
     }
+    &.payment-method--card-exp{
+      @include phone-down{
+        max-width: 188px;
+      }
+      @include phone-small{
+        width: 50%;
+        max-width: 150px;
+      }
+    }
   }
   label{
     color: $gray-d2;
@@ -46,6 +57,17 @@
       padding: 0;
       border: none;
       color: $unnamed-color-172026;
+      font-size: $font-size-20;
+      line-height: $line-spacing-30;
+      font-weight: $font-weight-bold;
+      &.make-indicate{
+        color: $gray-m2;
+        padding: 24px 0;
+        border: 1px solid $gray-l3;
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+      }
     }
   }
 }
@@ -75,10 +97,16 @@
 }
 .payment-method__check-input{
   margin-top: 20px;
+  @include tablet-down{
+    margin-top: 16px;
+  }
   .wrapper{
     justify-content: flex-start;
     label{
       margin: 4px 0 0 16px;
+      @include tablet-down{
+        width: calc(100% - 40px);
+      }
     }
   }
 }
@@ -88,7 +116,7 @@
   border: 1px solid $gray-l3;
   border-radius: 2px;
   padding: 24px 32px 24px 24px;
-  margin: 16px 0 32px;
+  margin: 16px 0 16px;
 }
 
 .payment-method__payment-data--pay-info{
@@ -97,6 +125,14 @@
       font-size: $font-size-16;
       line-height: $line-spacing-24;
       color: $gray-d1;
+    }
+  }
+}
+
+.payment-method__payment-form{
+  .btn-secondry{
+    @include tablet-down{
+      margin: 32px auto 40px;
     }
   }
 }

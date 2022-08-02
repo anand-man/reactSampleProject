@@ -23,6 +23,7 @@ const CountrySelector = React.forwardRef((props, ref) => {
   return (
     <div className= "select-country">
       <p>Country</p>
+      <span>carrot</span>
       <select ref={ref} onChange={(event) => {changeHandler(event);props.onChange(event);}} value = {counValue.code} countryname = {counValue.name ? counValue.name : "country"}>
         <option>Select Country</option>
         {countries.map((item, index) => {

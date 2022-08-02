@@ -7,7 +7,9 @@ export default function Header() {
 
   const {productsInKart} = useSelector(state => state.kartData);
   const navigate = useNavigate();
-
+  const totalItems = productsInKart && productsInKart.reduce((currentItem, nextItem) => {
+    return currentItem + nextItem.totalItem
+  }, 0);
   const menuToggle = () => {
     document.body.classList.toggle("menu-mobile");
     const header = document.querySelector(".header");
@@ -67,7 +69,7 @@ export default function Header() {
                     <path id="Path_38094" data-name="Path 38094" d="M16,10a4,4,0,0,1-8,0" fill="none" stroke="#ffffff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
                   </g>
                 </svg>
-                <span>{productsInKart && productsInKart.length}</span>
+                <span>{totalItems}</span>
               </li>
             </ul>
           </div>

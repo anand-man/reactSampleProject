@@ -7,6 +7,7 @@ import ProductDetails from "./components/Product/ProductDetails";
 import ProductKart from "./components/Kart/ProductKart";
 import SecondLevelBanner from "./components/Second Level Banner/SecondLevelBanner";
 import CheckoutHandler from "./components/Checkout/CheckoutHandler";
+import OrderPlaced from "./components/Order Placed/OrderPlaced";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/products/:category/:productId" element= {<ProductDetails/>}/>
         <Route path="/kart" element= {<ProductKart/>}/>
         <Route path ="/checkout" element = {<CheckoutHandler/>} />
+        <Route path ="/order-placed" element = {<OrderPlaced/>} />
       </Routes>
       <Footer/>
     </>

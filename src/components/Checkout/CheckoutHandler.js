@@ -1,32 +1,27 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import Container from "../commons/Container";
 import Pricing from "../Kart/Pricing";
 import Contact from "./Contact";
+import OrderedItem from "./OrderedItem";
 import PaymentMethod from "./PaymentMethod";
 import ShipingMethod from "./ShipingMethod";
 
 export default function CheckoutHandler() {
-
   
   const store = useSelector(state => state.checkoutData);
-
-  console.log(store.checkoutData);
+  const navigate = useNavigate();
 
   const [checkoutAttr, setCheckoutAttr] = useState({
     contactInfo: true,
     shipingMethod: false,
-    paymentInfo: false
+    paymentInfo: false,
+    contactEdit: false,
+    shippingEdit: false,
+    paymentInfo: false,
+    orderItems: false
   });
-
-  const onContactSave = (event) => {
-    event.preventDefault();
-    setCheckoutAttr((prevState) => ({
-      ...prevState,
-      contactInfo: false,
-      shipingMethod: true
-    }));
-  }
 
   const editContact= (event) => {
     event.preventDefault();
@@ -52,6 +47,15 @@ export default function CheckoutHandler() {
     }));
   }
 
+  const onContactSave = (event) => {
+    event.preventDefault();
+    setCheckoutAttr((prevState) => ({
+      ...prevState,
+      contactInfo: false,
+      shipingMethod: true
+    }));
+  }
+
   const onShipingSave = (event) => {
     event.preventDefault();
     setCheckoutAttr((prevState) => ({
@@ -68,6 +72,19 @@ export default function CheckoutHandler() {
     }));
   }
 
+  const reviewOrder = (event) =>{
+    event.preventDefault();
+    setCheckoutAttr({
+      contactInfo: false,
+      shipingMethod: false,
+      paymentInfo: false,
+      contactEdit: false,
+      shippingEdit: false,
+      paymentInfo: false,
+      orderItems: true
+    })
+  }
+
   return (
     <section className="product-checkout">
       <Container>
@@ -76,18 +93,24 @@ export default function CheckoutHandler() {
         <div className="col-seven">
           <h2>Guest Checkout</h2>
           <div className="product-checkout--contact">
-          <Contact onEdit = {editContact} onContactSave = {onContactSave} notification = {checkoutAttr.contactInfo} conDatas = {store.checkoutData.contactInfo} />
+          <Contact onEdit = {editContact} onContactSave = {onContactSave} notification = {checkoutAttr} conDatas = {store.checkoutData.contactInfo}/>
           </div>
           <div className="product-checkout--shiping-method">
-            {!checkoutAttr.shipingMethod && <h5 className={checkoutAttr.shipingMethod ? "hide" : ""}>2. Shipping Method</h5>}
             <ShipingMethod onEdit = {editShipping} onShipingSave = {onShipingSave} shippingData = {{notification: checkoutAttr.shipingMethod, data: store.checkoutData.shipingMethod}}/>
           </div>
           <div className="product-checkout--payment-info">
-            {!checkoutAttr.paymentInfo && <h5>3. Payment Information</h5>}
-            <PaymentMethod onEdit = {editPayment} notification = {checkoutAttr.paymentInfo} onPaymentSave = {onPaymentSave} payData = {store.checkoutData.paymentInfo}/>
+            <PaymentMethod onEdit = {editPayment} notification = {checkoutAttr.paymentInfo} onPaymentSave = {onPaymentSave} payData = {store.checkoutData.paymentInfo} reviewOrder = {reviewOrder} test= {checkoutAttr}/>
           </div>
+          <OrderedItem notification = {checkoutAttr.orderItems}/>
+          {checkoutAttr.orderItems && <div className="product-checkout__order-placed">
+            <div className="kart-btn"  onClick={() => {navigate("/order-placed")}}><span>PLACE ORDER</span></div>
+          </div>} 
         </div>
         <div className="col-three">
+          <div className = "product-checkout--signin">
+            <h5>Sign in for Express Checkout</h5>
+            <a href="#" className="btn-secondry"><span>SIGN IN</span></a>
+          </div>
           <Pricing/>
         </div>
       </div>

@@ -8,14 +8,31 @@
     font-weight: $font-weight-bold;
     margin: 0 0 8px 0;
   }
+  > h5{
+    @include desktop-down{
+      margin-bottom: 16px;
+    }
+  }
+  > p{
+    font-size: 16px;
+    line-height: $line-spacing-24;
+  }
   .wrapper{
     flex-direction: column-reverse;
     width: calc(50% - 32px);
     margin: 0 16px;
     padding: 8px 0;
     justify-content: flex-start;
+    @include tablet-down{
+      width: 100%;
+      max-width: 436px;
+    }
     &.zip{
       width: 128px;
+      @include tablet-down{
+        width: 100%;
+        max-width: 436px;
+      }
     }
 
     span{
@@ -32,23 +49,69 @@
     color: $gray-d2;    
     border: 2px solid $gray-l2;
     border-radius: 8px;
-    outline: none;
+    transition: all ease-out 0.3s;
     &:focus{
-      border-color: $primary-brand1;
+      outline: $primary-brand1 solid 4px;
     }
     
   }
     .select-country{
       width: calc(50% - 32px);
       margin: 16px 17px 32px 16px;
+      position: relative;
+      @include tablet-down{
+        width: 100%;
+        margin: 8px 16px 8px;
+      }
     }
     .select-state{
       width: 274px;
       padding: 8px 0;
+      position: relative;
+      @include desktop{
+        width: calc(50% - 32px);
+        margin: 0 16px;
+      }
+      @include desktop-down{
+        margin: 0 16px;
+      }
+      @include tablet{
+        width: calc(50% - 32px);
+      }
+      @include tablet-down{
+        width: 100%;
+      }
       select{
         width: 100%;
         option{
           padding: 10px;
+        }
+      }
+    }
+
+    .select-country, .select-state{
+      select{
+        appearance: none;
+        position: relative;
+      }
+      span{
+        max-width: 436px;
+        text-indent: -9999px;
+        position: absolute;
+        height: 42px;
+        width: 100%;
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          right: 15px;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          width: 16px;
+          height: 14px;
+          background: url("../../../public/Images/chevron-down.svg") no-repeat;
+          z-index: 1111;
         }
       }
     }
@@ -77,7 +140,9 @@
 }
 .contact-info__email-phone{
   padding: 8px 0 32px;
-
+  @include desktop-down{
+    padding: 8px 0 24px;
+  }
 }
 .contact-info__contact-data{
   @include flex(100%);
@@ -86,6 +151,10 @@
   border-radius: 2px;
   padding: 24px 32px 24px 24px;
   margin: 0 0 16px;
+  @include tablet-down{
+    padding: 24px 16px;
+    margin: 0 0 16px; 
+  }
 }
 .contact-info__contact-data--title{
   @include flex(100%);
@@ -102,7 +171,9 @@
     font-weight: 500;
     position: relative;
     cursor: pointer;
-
+    @include phone-down{
+      text-indent: -9999px;
+    }
     &::before{
       content: "";
       position: absolute;
@@ -119,8 +190,14 @@
   width: calc(34.1% + 120px);
   margin-right: 120px;
   max-width: 157px;
+  @include tablet-down{
+    margin: 0 0 16px;
+  }
 }
 .contact-info__contact-data--name-address{
   max-width: 220px;
   padding: 0 20px 0 0;
+  @include tablet-down{
+    padding: 0;
+  }
 }
