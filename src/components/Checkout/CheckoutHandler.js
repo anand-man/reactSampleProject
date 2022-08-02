@@ -23,6 +23,8 @@ export default function CheckoutHandler() {
     orderItems: false
   });
 
+  // console.log(store.checkoutData)
+
   const editContact= (event) => {
     event.preventDefault();
     setCheckoutAttr((prevState) => ({
@@ -96,6 +98,7 @@ export default function CheckoutHandler() {
           <Contact onEdit = {editContact} onContactSave = {onContactSave} notification = {checkoutAttr} conDatas = {store.checkoutData.contactInfo}/>
           </div>
           <div className="product-checkout--shiping-method">
+
             <ShipingMethod onEdit = {editShipping} onShipingSave = {onShipingSave} shippingData = {{notification: checkoutAttr.shipingMethod, data: store.checkoutData.shipingMethod}}/>
           </div>
           <div className="product-checkout--payment-info">

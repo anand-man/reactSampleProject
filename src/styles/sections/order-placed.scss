@@ -24,3 +24,23 @@
 
   }
 }
+.order-placed__column-wrapper{
+  @include flex();
+  margin: 62px 0 0;
+  @include desktop-down{
+    margin: 52px 0 0;
+  }
+  .col-seven{
+    width: calc(66%);
+    @include desktop-down{
+      width: 100%;
+    }
+  }
+
+  .col-three{
+    width: 31.88%;
+    @include tablet-down{
+      width: 100%;
+    }
+  }
+}

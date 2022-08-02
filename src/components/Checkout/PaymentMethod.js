@@ -142,7 +142,7 @@ export default function PaymentMethod(props) {
 
   const {payType, cardNum} = props.payData ? props.payData.info : "";
 
-  console.log(props.test)
+  // console.log(props.test)
 
   return (
     <div className="payment-method">

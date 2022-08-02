@@ -5,7 +5,7 @@ import CountrySelector from "../commons/CountrySelector";
 import InputBox from "../commons/Input";
 import StateSelector from "../commons/StateSelector";
 import PhoneInput from "react-phone-number-input/input";
-import { Country}  from 'country-state-city';
+import ContactData from "./ContactData";
 
 export default function Contact(props) {
 
@@ -18,7 +18,7 @@ const dispatch = useDispatch();
 
 const [contactDataShow, setcontactDataShow] = useState(false);
 
-const {email, contactNo, firstName, lastName, streetAdd1, streetAdd2, city, country, state, zipCode} = props.conDatas ? props.conDatas : "";
+const {email, contactNo, firstName, lastName, streetAdd1, streetAdd2, city, countryName, country, state, zipCode} = props.conDatas ? props.conDatas : "";
 
 const [contactInfo, setContactInfo] = useState({
   email: email ? email : "",
@@ -31,6 +31,7 @@ const [contactInfo, setContactInfo] = useState({
   city: city ? city : "",
   state: state ? state : "",
   zipCode: zipCode ? zipCode : "",
+  countryName: countryName ? countryName : ""
 });
 
 const onEmailChange = (event) => {
@@ -47,11 +48,13 @@ const onPhoneChange = (value) => {
 }
 
 const countryChangeHandler = (event) => {
+  event.preventDefault();
   setContactInfo(prevState => ({
     ...prevState,
     countryCode: event.target.value,
-    countryName: countryCodeName.name
+    ...countryRef.current.attributes.countryName
   }));
+  console.log(countryCodeName)
 }
 const stateChangeHandler = (event) => {
   setContactInfo(prevState => ({
@@ -66,6 +69,8 @@ const streetAdd1Ref = useRef("");
 const streetAdd2Ref = useRef("");
 const cityRef = useRef("");
 const zipCodeRef = useRef("");
+const countryRef = useRef("");
+const stateRef = useRef("");
 
 const getCountryCode = (code) => {
   setCountryCodeName({...code});
@@ -80,7 +85,6 @@ const onChangeHandler = () => {
     streetAdd2: streetAdd2Ref.current.value,
     city: cityRef.current.value,
     zipCode: zipCodeRef.current.value,
-    countryName: countryCodeName.name 
   }))
 }
 
@@ -95,14 +99,19 @@ const onEdit = (event) => {
 
 const submitContact = (event) => {
   event.preventDefault();
+
   const checkoutData = {
-    customerId: "cus01",
-    contactInfo,
+    customerId: "cus02",
+    contactInfo: {
+      ...contactInfo,
+      countryName: countryRef.current.attributes.countryName.value,
+      state: stateRef.current.value,
+    }
   }
   dispatch(addCusAddress(checkoutData));
   dataShow();
 }
-// console.log(props.notification.contactInfo || props.notification.contactEdit)
+
   return (
     <div className="contact-info">
       {props.notification.contactInfo  && <><h5>Contact information</h5>
@@ -121,37 +130,18 @@ const submitContact = (event) => {
       </div>
       <div className="contact-info__shiping-info">
         <h5>1. Shipping Information</h5>
-        <CountrySelector getCountryCode = {getCountryCode} value = {contactInfo.countryCode} countryname = {contactInfo.countryName} onChange =  {countryChangeHandler}/>
+        <CountrySelector ref={countryRef} getCountryCode = {getCountryCode} value = {contactInfo.countryCode} countryname = {contactInfo.countryName} onChange =  {countryChangeHandler}/>
         <InputBox ref= {firstNameRef} className = "wrapper" input= {{type: "text", id: "firstName", value: contactInfo.firstName, onChange: onChangeHandler}} label = "First Name"/>
         <InputBox ref= {secondNameRef} className = "wrapper" input= {{type: "text", id: "lastName", value: contactInfo.lastName, onChange: onChangeHandler}} label = "Last Name"/>
         <InputBox ref= {streetAdd1Ref} className = "wrapper" input= {{type: "text", id: "streetAdd", value: contactInfo.streetAdd1, onChange: onChangeHandler}} label = "Street Address"/>
         <InputBox ref= {streetAdd2Ref} className = "wrapper" input= {{type: "text", id: "streetAdd2", value: contactInfo.streetAdd2, onChange: onChangeHandler}} label = "Street Address 2" supportTxt = "Optional"/>
         <InputBox ref= {cityRef} className = "wrapper" input= {{type: "text", id: "city", value: contactInfo.city, onChange: onChangeHandler}} label = "City"/>
-        <StateSelector countryCode = {countryCodeName.code} value= {contactInfo.state} onChange= {stateChangeHandler}/>
+        <StateSelector ref={stateRef} countryCode = {countryCodeName.code} value= {contactInfo.state} onChange= {stateChangeHandler}/>
         <InputBox ref= {zipCodeRef} className = "wrapper zip" input= {{type: "number", id: "zipCode", value: contactInfo.zipCode, onChange: onChangeHandler}} label = "ZIP"/>
       </div>
       <button className="btn-secondry"><span>{props.notification.contactEdit ? "CONTINUE TO REVIEW ORDER" : "CONTINUE TO SHIPPING METHOD"}</span></button>
       </form> </>}
-      {contactDataShow && <div className="contact-info__contact-data">
-        <div className="contact-info__contact-data--title">
-          <h6>Shipping Information</h6>
-          <p onClick={event => onEdit(event)}>Edit</p>
-        </div>
-        <div className="contact-info__contact-data--email-phone">
-          <ul>
-            <li>{email}</li>
-            <li>{contactNo}</li>
-          </ul>
-        </div>
-        <div className="contact-info__contact-data--name-address">
-          <ul>
-            <li>{firstName} {lastName}</li>
-            <li>{streetAdd1} {streetAdd2}</li>
-            <li>{city}, {state} {zipCode}</li>
-            <li>{countryCodeName.name}</li>
-          </ul>
-        </div>
-        </div>}
+      {contactDataShow && <ContactData conDatas = {props.conDatas} onEdit = {onEdit} countryName = {countryCodeName}/>}
     </div>
   )
 }
