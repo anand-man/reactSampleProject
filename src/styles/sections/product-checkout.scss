@@ -6,6 +6,7 @@
   h1{
     color: $unnamed-color-172026;
     font-family: $font-family-proxima-serif;
+    font-weight: $font-weight-bold;
     position: relative;
     text-align: center;
     @include tablet-down{

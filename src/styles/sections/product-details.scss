@@ -57,14 +57,14 @@ section {
             height: 8px;
             background-color: $primary-brand;
             display: block;
-            bottom: -24px;
+            bottom: -8px;
             left: 50%;
             transform: translateX(-50%);
           }
         }
 
         @include tablet-down{
-          padding-top: 32px;
+          padding-top: 48px;
         }
         h5, h3{
           @include tablet-down{
@@ -398,6 +398,15 @@ section {
                 background-size: 18px 16px;
               }
             }
+          }
+        }
+      }
+      .kart-btn{
+        @include phone-down{
+          display: block;
+          margin: auto;
+          span{
+            text-align: center;
           }
         }
       }

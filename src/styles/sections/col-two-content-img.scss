@@ -1,0 +1,125 @@
+.col-two-content-img{
+    padding: 20px 0 0 ;
+    @include desktop-down{
+      padding: 0;
+    }
+    h2 {
+      color: $unnamed-color-172026;
+      line-height: 60px;
+      font-family: $font-family-proxima-serif;
+      font-weight: $font-weight-bold;
+      @include desktop {
+        font-size: $font-size-40;
+      }
+      @include tablet-down {
+        font-size: $font-size-36;
+        line-height: $line-spacing-38;
+      }
+    }
+    a{
+      text-decoration: none;
+    }
+    h3{
+      font-size: $font-size-20;
+      line-height: $line-spacing-25;
+      font-weight: $font-weight-bold;
+      margin: 8px 0 0;
+    }
+    p {
+      color: $unnamed-color-172026;
+      font-size: $font-size-16;
+      line-height: $line-spacing-24;
+      margin: 16px 0 0;
+      @include desktop-down{
+        margin: 16px 0 8px;
+      }
+    }
+  }
+  
+.col-two-content-img__column-wrapper{
+    @include flex(calc(100% - 117px));
+    align-items: center;
+    margin: 0 0 0 117px;
+    @include desktop{
+      width: calc(100% - 35px);
+      margin: 0 0 0 35px;
+    }
+    @include desktop-down{
+      width: 100%;
+      margin: 0;
+      flex-direction: column-reverse;
+      flex-wrap: nowrap;
+      height: 100%;
+    }
+  }
+  .col-two-content-img--content-wrapper{
+    width: calc(50.24%);
+    position: relative;
+    padding: 0 0 64px;
+    @include desktop-down{
+      width: calc(100%);
+      margin: 16px 0;
+      text-align: center;
+    }
+    @include desktop{
+      padding: 0 0 56px;
+    }
+    @include tablet{
+      padding: 0 0 47px;
+    }
+    @include tablet-down{
+      padding: 0 0 40px;
+    }
+    &::before{
+      content: "";
+      position: absolute;
+      width: 102px;
+      height: 8px;
+      background-color: $primary-brand;
+      left: 0;
+      bottom: 0;
+      @include desktop-down{
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+  .col-two-content-img--img-wrapper{
+    width: 47.78%;
+    height: 450px;
+    @include desktop-down{
+      width: 100%;
+    }
+    @include phone-down{
+      height: 312px;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .col-two-content-img__content-wrapper--btn-wrapper{
+    @include flex();
+    justify-content: flex-start;
+    @include desktop-down{
+      justify-content: center;
+    }
+    @include tablet-down{
+      display: block;
+    }
+    .btn-secondry, .btn-primary{
+      min-width: 221px;
+      width: fit-content;
+      margin: 24px 0 0;
+    }
+    .btn-secondry{
+      margin: 24px 33px 0 0;
+      @include tablet-down{
+        margin: 24px auto 0;
+      }
+     span{
+      padding: 11px 42px 9px;
+     }
+    }
+  }

@@ -8,9 +8,6 @@ export default function OrderPlaced(props) {
 
   const { email, contactNo, firstName, lastName, streetAdd1, streetAdd2, city, countryName, state, zipCode } = store.contactInfo ? store.contactInfo : "";
 
-  console.log(store)
-  // const {}
-
   return (
     <section className="order-placed">
       <Container>

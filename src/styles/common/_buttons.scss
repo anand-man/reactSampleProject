@@ -68,6 +68,29 @@
   }
 }
 
+.btn-primary{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  text-transform: capitalize;
+  color: $white;
+  background-color: $primary-brand;
+  cursor: pointer;
+  transition: all ease-out 0.3s;
+  span{
+    display: block;
+    padding: 15px 40px 9px;
+    font-size: 14px;
+    line-height: $line-spacing-16;
+    font-weight: bold;
+  }
+  &:hover{
+    background-color: $primary-d1;
+  }
+}
+
 .btn-secondry{
   display: block;
   min-width: 160px;

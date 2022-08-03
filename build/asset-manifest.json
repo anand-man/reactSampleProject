@@ -1,34 +1,39 @@
 {
   "files": {
-    "main.css": "/reactSampleProject/build/static/css/main.4d81a2f7.css",
-    "main.js": "/reactSampleProject/build/static/js/main.54adda85.js",
+    "main.css": "/reactSampleProject/build/static/css/main.5394d8d4.css",
+    "main.js": "/reactSampleProject/build/static/js/main.5603534f.js",
     "static/js/787.fa3c4679.chunk.js": "/reactSampleProject/build/static/js/787.fa3c4679.chunk.js",
     "static/media/sliders.svg": "/reactSampleProject/build/static/media/sliders.07a0e59562aded129aac.svg",
     "static/media/sunrise.svg": "/reactSampleProject/build/static/media/sunrise.8a841b3b95440611e10b.svg",
     "static/media/share-2.svg": "/reactSampleProject/build/static/media/share-2.c9452d8d0a01f15f7b30.svg",
+    "static/media/instagram-white.svg": "/reactSampleProject/build/static/media/instagram-white.aed30391d7ee47c71052.svg",
     "static/media/smile.svg": "/reactSampleProject/build/static/media/smile.c5b1ab9d10d2f5f519a9.svg",
     "static/media/trash-2.svg": "/reactSampleProject/build/static/media/trash-2.42240970dae2f7577569.svg",
     "index.html": "/reactSampleProject/build/index.html",
     "static/media/logo-instagram.svg": "/reactSampleProject/build/static/media/logo-instagram.f7483e2a7dff4c35e514.svg",
+    "static/media/map-pin.svg": "/reactSampleProject/build/static/media/map-pin.852024007d574484f01c.svg",
     "static/media/cross.svg": "/reactSampleProject/build/static/media/cross.18ffa5a5f6cf0611910c.svg",
+    "static/media/twitter-white.svg": "/reactSampleProject/build/static/media/twitter-white.232117538bec0f6441a1.svg",
     "static/media/arrow-down.svg": "/reactSampleProject/build/static/media/arrow-down.14a98747d54c444aae04.svg",
     "static/media/arrow-up.svg": "/reactSampleProject/build/static/media/arrow-up.338d97b79a6b35ea4cfe.svg",
     "static/media/logo-twitter.svg": "/reactSampleProject/build/static/media/logo-twitter.3d9f31115be6b897b5d4.svg",
+    "static/media/facebook-white.svg": "/reactSampleProject/build/static/media/facebook-white.1c9767c4a18f7f3321bd.svg",
     "static/media/heart.svg": "/reactSampleProject/build/static/media/heart.3b35352339d37da7c50b.svg",
     "static/media/chevrons-right.svg": "/reactSampleProject/build/static/media/chevrons-right.9c11d01151aac08186d4.svg",
     "static/media/star.svg": "/reactSampleProject/build/static/media/star.fe394c89bc9d30f8ba87.svg",
+    "static/media/edit-orange.svg": "/reactSampleProject/build/static/media/edit-orange.f2b7dff051cf51001993.svg",
     "static/media/edit-2.svg": "/reactSampleProject/build/static/media/edit-2.d788d68fd7e2875db7c4.svg",
     "static/media/logo-facebook.svg": "/reactSampleProject/build/static/media/logo-facebook.b5b54c5572636785078a.svg",
     "static/media/chevron-down.svg": "/reactSampleProject/build/static/media/chevron-down.c0c85f0327c8b7a8c6de.svg",
     "static/media/check-white.svg": "/reactSampleProject/build/static/media/check-white.686a133c8c247b95c663.svg",
-    "static/media/check.svg": "/reactSampleProject/build/static/media/check.ffd4d9f896701562a4cb.svg",
+    "static/media/check.svg": "/reactSampleProject/build/static/media/check.388123a2385c15dd16c5.svg",
     "static/media/chevron-up.svg": "/reactSampleProject/build/static/media/chevron-up.ea41eae66638440ee8b3.svg",
-    "main.4d81a2f7.css.map": "/reactSampleProject/build/static/css/main.4d81a2f7.css.map",
-    "main.54adda85.js.map": "/reactSampleProject/build/static/js/main.54adda85.js.map",
+    "main.5394d8d4.css.map": "/reactSampleProject/build/static/css/main.5394d8d4.css.map",
+    "main.5603534f.js.map": "/reactSampleProject/build/static/js/main.5603534f.js.map",
     "787.fa3c4679.chunk.js.map": "/reactSampleProject/build/static/js/787.fa3c4679.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4d81a2f7.css",
-    "static/js/main.54adda85.js"
+    "static/css/main.5394d8d4.css",
+    "static/js/main.5603534f.js"
   ]
 }
