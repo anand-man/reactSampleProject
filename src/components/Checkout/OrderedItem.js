@@ -9,7 +9,7 @@ export default function OrderedItem(props) {
   }, 0)
   return (
     <>
-      {props.notification && <div className="product-checkout__order-items">
+      {props.notification && <div className= {`${props.className}__order-items`}>
         <h5>{totalItems} items in your order</h5>
         {orederedProduct && orederedProduct.map(item => {
           const{title, id, image, totalItem} = item

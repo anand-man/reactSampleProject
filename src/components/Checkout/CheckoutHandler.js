@@ -23,8 +23,6 @@ export default function CheckoutHandler() {
     orderItems: false
   });
 
-  // console.log(store.checkoutData)
-
   const editContact= (event) => {
     event.preventDefault();
     setCheckoutAttr((prevState) => ({
@@ -98,13 +96,15 @@ export default function CheckoutHandler() {
           <Contact onEdit = {editContact} onContactSave = {onContactSave} notification = {checkoutAttr} conDatas = {store.checkoutData.contactInfo}/>
           </div>
           <div className="product-checkout--shiping-method">
-
             <ShipingMethod onEdit = {editShipping} onShipingSave = {onShipingSave} shippingData = {{notification: checkoutAttr.shipingMethod, data: store.checkoutData.shipingMethod}}/>
           </div>
+
           <div className="product-checkout--payment-info">
             <PaymentMethod onEdit = {editPayment} notification = {checkoutAttr.paymentInfo} onPaymentSave = {onPaymentSave} payData = {store.checkoutData.paymentInfo} reviewOrder = {reviewOrder} test= {checkoutAttr}/>
           </div>
-          <OrderedItem notification = {checkoutAttr.orderItems}/>
+
+          <OrderedItem className = "product-checkout" notification = {checkoutAttr.orderItems}/>
+
           {checkoutAttr.orderItems && <div className="product-checkout__order-placed">
             <div className="kart-btn"  onClick={() => {navigate("/order-placed")}}><span>PLACE ORDER</span></div>
           </div>} 

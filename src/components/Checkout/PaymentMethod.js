@@ -142,8 +142,6 @@ export default function PaymentMethod(props) {
 
   const {payType, cardNum} = props.payData ? props.payData.info : "";
 
-  // console.log(props.test)
-
   return (
     <div className="payment-method">
       {!payMethod.status && <h5 className={!props.notification ? "make-indicate" : ""}>3. Payment Information</h5>}
