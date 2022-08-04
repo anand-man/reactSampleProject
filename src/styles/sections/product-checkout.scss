@@ -87,6 +87,11 @@
     @include desktop-down{
       width: 100%;
     }
+    &.no-sign{
+      .product-kart__pricing{
+        margin: 50px 0 0;
+      }
+    }
   }
 }
 

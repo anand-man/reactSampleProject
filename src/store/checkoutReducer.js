@@ -1,5 +1,9 @@
 import * as type from "./actionType";
-import { initialState } from "./initialState";
+
+const initialState = {
+  checkoutData: [],
+  orderDetail: []
+}
 
 const checkoutReducer = (state = initialState, action) => {
 
@@ -27,6 +31,15 @@ const checkoutReducer = (state = initialState, action) => {
           ...state.checkoutData,
           paymentInfo: action.payload
         }
+      }
+    case type.ORDER_PLACED:
+      return{
+        ...state,
+        orderDetail: {
+          ...action.payload
+        },
+        checkoutData: [],
+        kartData: []
       }
     default:
       return state

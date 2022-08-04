@@ -21,8 +21,9 @@ export default function Header() {
       item.classList.remove("selected");
     });
     event.target.parentNode.classList.add("selected");
-    // const header = document.querySelector(".header");
-    // header.getElementsByClassName("column-wrapper")[0].classList.remove("active");
+    const header = document.querySelector(".header");
+    header.getElementsByClassName("column-wrapper")[0].classList.remove("active");
+    document.body.classList.remove("menu-mobile")
   }
   
   return (

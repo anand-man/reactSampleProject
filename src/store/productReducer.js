@@ -1,6 +1,14 @@
 
 import * as types from './actionType';
-import { initialState } from './initialState';
+import productAttr from './productAttr';
+
+const initialState = {
+    products: [],
+    product: [],
+    productAttr: productAttr,
+    loadingMsg: "Please wait while we are loading the products for you! :)",
+    error: "",
+  }
 
 const productReducers = (state = initialState, action) => {
     switch (action.type) {

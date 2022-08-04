@@ -75,7 +75,7 @@ export default function ProductDetails() {
               </div>
             </div>
             <div className="col-four">
-            <div className="breadcrumb"><span className="product" onClick={() => navigate("/")}>Products</span><span>/</span>
+            <div className="breadcrumb"><span className="product" onClick={() => navigate("/products")}>Products</span><span>/</span>
             <span>{param.category}</span></div>
               <div className="product-description">
                 <h3>{title}</h3>

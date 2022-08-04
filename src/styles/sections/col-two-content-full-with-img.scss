@@ -1,5 +1,9 @@
 .col-two-content-full-with-img{
-  padding: 62px 0 0 ;
+  padding: 62px 0 88px ;
+  @include desktop{
+    padding: 62px 0 60px;
+  }
+
   @include desktop-down{
     padding: 32px 0 0;
   }

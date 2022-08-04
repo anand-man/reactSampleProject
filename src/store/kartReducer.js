@@ -1,5 +1,8 @@
 import * as type from './actionType';
-import { initialState } from './initialState';
+
+const initialState = {
+  productsInKart: [],
+}
 
 const kartReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -53,6 +56,11 @@ const kartReducer = (state = initialState, action) => {
       return {
         ...state,
         productsInKart: decreasedProduct
+      }
+    case type.ORDER_PLACED: 
+      return{
+        ...state,
+        productsInKart: []
       }
     default:
       return state

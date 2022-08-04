@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 
-const CvvInput = (props) => {
+const CvvInput = React.forwardRef((props, ref) => {
 
-  const [card, setCard] = useState();
-  const cvvRef = useRef();
+  const cvvRef = ref;
 
   const handleChange = () => {
     const cardValue = cvvRef.current.value
@@ -13,21 +12,16 @@ const CvvInput = (props) => {
       ? cardValue[1]
       : `${cardValue[1]}/${cardValue[2]}`;
     const numbers = cvvRef.current.value.replace(/(\D)/g, '');
-    setCard(numbers);
     props.getValue(numbers);
   };
 
-  useEffect(() => {
-    handleChange();
-  }, []);
-
   return (
     <>
-    <input {...props.input} ref={cvvRef} onChange={handleChange} />
+    <input {...props.input} ref={ref} onChange={handleChange} />
     <label htmlFor = {props.input.id}>{props.label}</label>
     </>
       
   );
-};
+});
 
 export default CvvInput;

@@ -78,6 +78,12 @@ const getCountryCode = (code) => {
 }
 
 const onChangeHandler = () => {
+  const zipValue = zipCodeRef.current.value
+      .replace(/\D/g, '')
+      .match(/(\d{0,6})/);
+    zipCodeRef.current.value = !zipValue[2] && zipValue[1]
+      
+
   setContactInfo(prevState => ({
     ...prevState,
     firstName: firstNameRef.current.value, 
@@ -177,14 +183,14 @@ const submitContact = (event) => {
       </div>
       <div className="contact-info__shiping-info">
         <h5>1. Shipping Information</h5>
-        <CountrySelector ref={countryRef} getCountryCode = {getCountryCode} value = {countryCodeName.code} countryname = {contactInfo.countryName} onChange =  {countryChangeHandler}/>
+        <CountrySelector ref={countryRef} getCountryCode = {getCountryCode} value = {contactInfo.countryCode} countryname = {contactInfo.countryName} onChange =  {countryChangeHandler}/>
         <InputBox ref= {firstNameRef} className = "wrapper" input= {{type: "text", id: "firstName", value: contactInfo.firstName, onChange: onChangeHandler}} label = "First Name"/>
         <InputBox ref= {secondNameRef} className = "wrapper" input= {{type: "text", id: "lastName", value: contactInfo.lastName, onChange: onChangeHandler}} label = "Last Name"/>
         <InputBox ref= {streetAdd1Ref} className = "wrapper" input= {{type: "text", id: "streetAdd", value: contactInfo.streetAdd1, onChange: onChangeHandler}} label = "Street Address"/>
         <InputBox ref= {streetAdd2Ref} className = "wrapper" input= {{type: "text", id: "streetAdd2", value: contactInfo.streetAdd2, onChange: onChangeHandler}} label = "Street Address 2" supportTxt = "Optional"/>
         <InputBox ref= {cityRef} className = "wrapper" input= {{type: "text", id: "city", value: contactInfo.city, onChange: onChangeHandler}} label = "City"/>
         <StateSelector ref={stateRef} countryCode = {countryCodeName.code} value= {contactInfo.state} onChange= {stateChangeHandler}/>
-        <InputBox ref= {zipCodeRef} className = "wrapper zip" input= {{type: "number", id: "zipCode", value: contactInfo.zipCode, onChange: onChangeHandler}} label = "ZIP"/>
+        <InputBox ref= {zipCodeRef} className = "wrapper zip" input= {{type: "text", id: "zipCode", value: contactInfo.zipCode, onChange: onChangeHandler}} label = "ZIP"/>
       </div>
       <button className="btn-secondry"><span>{props.notification.contactEdit ? "CONTINUE TO REVIEW ORDER" : "CONTINUE TO SHIPPING METHOD"}</span></button>
       </form> </>}

@@ -3,14 +3,16 @@ import { useSelector } from "react-redux";
 import OrderedItem from "../Checkout/OrderedItem";
 import Container from "../commons/Container";
 
-export default function OrderPlaced(props) {
-  const store = useSelector(state => state.checkoutData.checkoutData);
+export default function OrderPlaced() {
 
-  const { email, contactNo, firstName, lastName, streetAdd1, streetAdd2, city, countryName, state, zipCode } = store.contactInfo ? store.contactInfo : "";
+  const store = useSelector(state => state.checkoutData.orderDetail);
+
+  const { email, contactNo, firstName, lastName, streetAdd1, streetAdd2, city, countryName, state, zipCode } = store.details ? store.details.contactInfo : "";
 
   return (
     <section className="order-placed">
-      <Container>
+      {store.length === 0 && <p className="no-product-in-kart">Please add some products.</p>}
+      {store.length !== 0 && <Container>
         <h1 className="heading-1">Order Successful!</h1>
         <div className="order-placed__column-wrapper">
           <div className="col-seven">
@@ -42,10 +44,10 @@ export default function OrderPlaced(props) {
                 <div className="order-placed__shipping-data--info">
                   <ul>
                     <li>{
-                      store.shippingMethod === "standard" && "Standard Shipping" || store.shippingMethod === "express" && "Express Delivery" || store.shippingMethod === "nextDay" && "Next Day Delivery"
+                      (store.details.shippingMethod === "standard" && "Standard Shipping") || (store.details.shippingMethod === "express" && "Express Delivery") || (store.details.shippingMethod === "nextDay" && "Next Day Delivery")
                     }</li>
                     <li>{
-                      store.shippingMethod === "standard" && "Est. delivery in 4 - 8 business days FREE" || store.shippingMethod === "express" && "Est. delivery in 2-5 business days via USPS" || store.shippingMethod === "nextDay" && "Est. delivery in Next business days via FedEx"
+                      (store.details.shippingMethod === "standard" && "Est. delivery in 4 - 8 business days FREE") || (store.details.shippingMethod === "express" && "Est. delivery in 2-5 business days via USPS") || (store.details.shippingMethod === "nextDay" && "Est. delivery in Next business days via FedEx")
                     }</li>
                   </ul>
                 </div>
@@ -56,13 +58,13 @@ export default function OrderPlaced(props) {
                 </div>
                 <div className="order-placed__payment-data--pay-info">
                   <ul>
-                    <li>{store.paymentInfo.info.payType}</li>
-                    <li>Visa ending in {store.paymentInfo.info.cardNum.slice(12, 16)}</li>
+                    <li>{store.details.paymentInfo.info.payType}</li>
+                    <li>Visa ending in {store.details.paymentInfo.info.cardNum.slice(12, 16)}</li>
                   </ul>
                 </div>
               </div>
             </div>
-            <OrderedItem className="order-placed" notification={true} />
+            <OrderedItem className="order-placed" data = {store.details.products} notification={true} />
             <div className="order-placed__description">
               <p>You will also receive an email with the details and we will let you know when your order has shipped.</p>
               <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. For assistance call Support at 1-800-867-5309, M - F, 9am - 8pm EST.</p>
@@ -79,7 +81,7 @@ export default function OrderPlaced(props) {
             </div>
           </div>
         </div>
-      </Container>
+      </Container>}
     </section>
   )
 }

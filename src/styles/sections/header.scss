@@ -21,7 +21,6 @@ header{
       color: $white;
       font-weight: 500;
       position: relative;
-
       a{
         text-decoration: none;
         letter-spacing: 0.8px;
@@ -41,6 +40,9 @@ header{
             width: calc(100%);
             height: 7px;
             background-color: $primary-l1;
+            @include desktop-down{
+              display: none;
+            }
           }
         }
       }
@@ -120,13 +122,19 @@ header{
             font-size: $font-size-16;
             @include desktop-down{
               padding: 16px 0;
-              border-bottom: 1px solid $gray-l1;
+              border-bottom: 2px solid $gray-l1;
+              color: $unnamed-color-172026;
               &:last-child{
                 margin-bottom: 0;
               }
               a{
                 padding:0;
                 line-height: $line-spacing-24;
+              }
+            }
+            &.selected{
+              @include desktop-down{
+                border-color: $primary-brand;
               }
             }
             &:last-child{

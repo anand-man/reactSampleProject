@@ -183,7 +183,7 @@
         left: 0;
         width: calc(100% - 32px);
         height: 100%;
-        background-color: $primary-brand;
+        background-color: $white;
         overflow: hidden;
         z-index: 1111;
       }
@@ -222,6 +222,11 @@
       }
     }
     
+  }
+
+  .no-product-in-kart{
+    text-align: center;
+    margin: 20px 0 0;
   }
 
   .loader-container {

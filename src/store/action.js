@@ -80,3 +80,9 @@ export const addPaymentInfo = (data) => {
          payload: data
     }
 }
+export const orderPlaced = (data) => {
+    return {
+        type: type.ORDER_PLACED,
+        payload: data
+    }
+}

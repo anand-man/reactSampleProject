@@ -223,8 +223,7 @@ export default function Products() {
               </div>
             </div>
             {products}
-          </div>
-          <div className="pagination">
+            <div className="pagination">
             <ul>
               {productPage.prevPage && <li className="prev" onClick={prevPage}>prev</li>}
               {Array.from({length: totalPage}).map((item, index) => {
@@ -232,6 +231,7 @@ export default function Products() {
               })}
               {totalPage > 1 && productPage.nextPage && <li className="next" onClick={nextPage}>next</li>}
             </ul>
+          </div>
           </div>
         </div>
         }

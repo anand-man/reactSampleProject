@@ -79,7 +79,6 @@ export default function PaymentMethod(props) {
     }
   }
 
-
   const getCardNum = (value) => {
     setPayInfo(prevState => ({
       ...prevState,
@@ -133,18 +132,21 @@ export default function PaymentMethod(props) {
       nameOnCardRef.current.focus();
       return;
     }
-    if(payInfo.info.cardNum === ""){
+    if(cardNoRef.current.value === ""){
+      cardNoRef.current.focus();
       alert("Please enter card no!");
       return;
     }
-    const paymentContainer = document.querySelector(".payment-method__payment-form");
-    const payment = paymentContainer.querySelectorAll(".payment-option");
-    let method;
-    payment.forEach((element) => {
-      if(element.checked){
-        method = element.id;
-      }
-    })
+    if(expDateRef.current.value === ""){
+      expDateRef.current.focus();
+      alert("Please enter expiry date");
+      return;
+    }
+    if(cvvRef.current.value === ""){
+      cvvRef.current.focus();
+      alert("Please enter card cvv");
+      return;
+    }
 
     props.onPaymentSave(event);
     dataShow();
@@ -172,18 +174,18 @@ export default function PaymentMethod(props) {
         </div>
 
         <div className="wrapper payment-method--card-exp">
-          <DateInput input = {{type: "text", id: "expData", }} getValue=  {getExpDate} label = "Expiration Date"/>
+          <DateInput ref={expDateRef} input = {{type: "text", id: "expData", }} getValue=  {getExpDate} label = "Expiration Date"/>
         </div>
 
         <div className="payment-method--card-cvv">
         <div className="wrapper">
-          <CvvInput input = {{type: "text", id: "cardCvv", }} getValue=  {getCvv} label = "CVV"/>
+          <CvvInput ref ={cvvRef} input = {{type: "text", id: "cardCvv", }} getValue=  {getCvv} label = "CVV"/>
         </div>
         <span>?</span>
         </div>
         </div>
         <div className="payment-method__check-input">
-          <InputBox className= "wrapper check-input" input = {{type: "checkbox", id: "addVerification", value:"sameAsShipping", onChange: onPayAddCheck }} label = "Billing address same as shipping address"/>
+          <InputBox className= "wrapper check-input" input = {{type: "checkbox", id: "addVerification", value:"sameAsShipping", defaultChecked: "checked", onChange: onPayAddCheck }} label = "Billing address same as shipping address"/>
         </div></>}
       </div>
       <div className={payMethod.payPal ? "payment-method__option pay-pal": "payment-method__option"}>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import { orderPlaced } from "../../store/action";
 import Container from "../commons/Container";
 import Pricing from "../Kart/Pricing";
 import Contact from "./Contact";
@@ -11,7 +12,9 @@ import ShipingMethod from "./ShipingMethod";
 export default function CheckoutHandler() {
   
   const store = useSelector(state => state.checkoutData);
+  const {productsInKart} = useSelector(state => state.kartData);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [checkoutAttr, setCheckoutAttr] = useState({
     contactInfo: true,
@@ -85,9 +88,18 @@ export default function CheckoutHandler() {
     })
   }
 
+  const orderDtail = {
+    orderNo: "#1700834",
+    details: {
+      ...store.checkoutData,
+      products: productsInKart
+    }
+  }
+
   return (
     <section className="product-checkout">
-      <Container>
+      {productsInKart.length === 0 && <p className="no-product-in-kart">You do not have any product in kart.</p>}
+      {productsInKart.length !== 0 && <Container>
       <h1 className="heading-1">Checkout</h1>
       <div className="product-checkout__column-wrapper">
         <div className="col-seven">
@@ -96,28 +108,28 @@ export default function CheckoutHandler() {
           <Contact onEdit = {editContact} onContactSave = {onContactSave} notification = {checkoutAttr} conDatas = {store.checkoutData.contactInfo}/>
           </div>
           <div className="product-checkout--shiping-method">
-            <ShipingMethod onEdit = {editShipping} onShipingSave = {onShipingSave} shippingData = {{notification: checkoutAttr.shipingMethod, data: store.checkoutData.shipingMethod}}/>
+            <ShipingMethod onEdit = {editShipping} onShipingSave = {onShipingSave} shippingData = {{notification: checkoutAttr.shipingMethod, data: store.checkoutData.shippingMethod}}/>
           </div>
 
           <div className="product-checkout--payment-info">
             <PaymentMethod onEdit = {editPayment} notification = {checkoutAttr.paymentInfo} onPaymentSave = {onPaymentSave} payData = {store.checkoutData.paymentInfo} reviewOrder = {reviewOrder} test= {checkoutAttr}/>
           </div>
 
-          <OrderedItem className = "product-checkout" notification = {checkoutAttr.orderItems}/>
+          <OrderedItem className = "product-checkout" data = {productsInKart} notification = {checkoutAttr.orderItems}/>
 
           {checkoutAttr.orderItems && <div className="product-checkout__order-placed">
-            <div className="kart-btn"  onClick={() => {navigate("/order-placed")}}><span>PLACE ORDER</span></div>
+            <div className="kart-btn"  onClick={() => {navigate("/order-placed"); dispatch(orderPlaced(orderDtail))}}><span>PLACE ORDER</span></div>
           </div>} 
         </div>
-        <div className="col-three">
-          <div className = "product-checkout--signin">
+        <div className= {checkoutAttr.contactInfo ? "col-three" : "col-three no-sign"}>
+          {checkoutAttr.contactInfo && <div className = "product-checkout--signin">
             <h5>Sign in for Express Checkout</h5>
             <a href="#" className="btn-secondry"><span>SIGN IN</span></a>
-          </div>
+          </div>}
           <Pricing/>
         </div>
       </div>
-      </Container>
+      </Container>}
     </section>
   )
 }

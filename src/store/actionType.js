@@ -7,3 +7,4 @@ export const DECREASE_ITEM = "DECREASE_ITEM";
 export const CUS_ADDRESS = "CUS_ADDRESS";
 export const PAYMENT_METHOD = "PAYMENT_METHOD";
 export const SHIPPING_METHOD = "SHIPPING_METHOD";
+export const ORDER_PLACED = "ORDER_PLACED";
