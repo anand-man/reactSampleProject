@@ -1,7 +1,7 @@
 .product-checkout{
   padding: 33px 0  40px;
   @include desktop-down{
-    padding: 24px 0 40px;
+    padding: 24px 0 0;
   }
   h1{
     color: $unnamed-color-172026;
@@ -84,7 +84,7 @@
 
   .col-three{
     width: 31.88%;
-    @include tablet-down{
+    @include desktop-down{
       width: 100%;
     }
   }

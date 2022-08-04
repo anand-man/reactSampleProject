@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/reactSampleProject/build/static/css/main.5394d8d4.css",
-    "main.js": "/reactSampleProject/build/static/js/main.5603534f.js",
+    "main.css": "/reactSampleProject/build/static/css/main.c37b70e8.css",
+    "main.js": "/reactSampleProject/build/static/js/main.6d24b742.js",
     "static/js/787.fa3c4679.chunk.js": "/reactSampleProject/build/static/js/787.fa3c4679.chunk.js",
     "static/media/sliders.svg": "/reactSampleProject/build/static/media/sliders.07a0e59562aded129aac.svg",
     "static/media/sunrise.svg": "/reactSampleProject/build/static/media/sunrise.8a841b3b95440611e10b.svg",
@@ -20,6 +20,7 @@
     "static/media/facebook-white.svg": "/reactSampleProject/build/static/media/facebook-white.1c9767c4a18f7f3321bd.svg",
     "static/media/heart.svg": "/reactSampleProject/build/static/media/heart.3b35352339d37da7c50b.svg",
     "static/media/chevrons-right.svg": "/reactSampleProject/build/static/media/chevrons-right.9c11d01151aac08186d4.svg",
+    "static/media/chevrons-left.svg": "/reactSampleProject/build/static/media/chevrons-left.a39f433d65a97159ca9c.svg",
     "static/media/star.svg": "/reactSampleProject/build/static/media/star.fe394c89bc9d30f8ba87.svg",
     "static/media/edit-orange.svg": "/reactSampleProject/build/static/media/edit-orange.f2b7dff051cf51001993.svg",
     "static/media/edit-2.svg": "/reactSampleProject/build/static/media/edit-2.d788d68fd7e2875db7c4.svg",
@@ -28,12 +29,12 @@
     "static/media/check-white.svg": "/reactSampleProject/build/static/media/check-white.686a133c8c247b95c663.svg",
     "static/media/check.svg": "/reactSampleProject/build/static/media/check.388123a2385c15dd16c5.svg",
     "static/media/chevron-up.svg": "/reactSampleProject/build/static/media/chevron-up.ea41eae66638440ee8b3.svg",
-    "main.5394d8d4.css.map": "/reactSampleProject/build/static/css/main.5394d8d4.css.map",
-    "main.5603534f.js.map": "/reactSampleProject/build/static/js/main.5603534f.js.map",
+    "main.c37b70e8.css.map": "/reactSampleProject/build/static/css/main.c37b70e8.css.map",
+    "main.6d24b742.js.map": "/reactSampleProject/build/static/js/main.6d24b742.js.map",
     "787.fa3c4679.chunk.js.map": "/reactSampleProject/build/static/js/787.fa3c4679.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5394d8d4.css",
-    "static/js/main.5603534f.js"
+    "static/css/main.c37b70e8.css",
+    "static/js/main.6d24b742.js"
   ]
 }

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState} from "react";
 import { useDispatch } from "react-redux";
 import { addPaymentInfo } from "../../store/action";
 import DateInput from "../commons/DateInput";
@@ -19,7 +19,7 @@ export default function PaymentMethod(props) {
   const [payInfo, setPayInfo] = useState({
     info: {
       nameOnCard: "",
-      cardNum: [],
+      cardNum: "",
       expDate: "",
       cvv: "",
       payType: "Credit Card",
@@ -27,7 +27,10 @@ export default function PaymentMethod(props) {
     payAddress: ""
   });
 
-  const nameOnCardRed = useRef();
+  const nameOnCardRef = useRef("");
+  const cardNoRef = useRef("");
+  const expDateRef = useRef("");
+  const cvvRef = useRef("");
 
   const onCreditCard = () => {
     setPayMethod(prevState => ({
@@ -87,14 +90,12 @@ export default function PaymentMethod(props) {
     }));
   }
 
-
-
   const cardNameHandler = (event) => {
     setPayInfo(prevState => ({
       ...prevState,
       info: {
         ...payInfo.info,
-        nameOnCard: nameOnCardRed.current.value
+        nameOnCard: nameOnCardRef.current.value
       }
     }));
   }
@@ -127,17 +128,28 @@ export default function PaymentMethod(props) {
 
   const onSubmitPayment = (event) => {
     event.preventDefault();
+    if(nameOnCardRef.current.value === ""){
+      alert("Please enter your name!");
+      nameOnCardRef.current.focus();
+      return;
+    }
+    if(payInfo.info.cardNum === ""){
+      alert("Please enter card no!");
+      return;
+    }
     const paymentContainer = document.querySelector(".payment-method__payment-form");
     const payment = paymentContainer.querySelectorAll(".payment-option");
-    let method = "";
+    let method;
     payment.forEach((element) => {
       if(element.checked){
         method = element.id;
       }
     })
+
     props.onPaymentSave(event);
     dataShow();
-    dispatch(addPaymentInfo(payInfo))
+    props.reviewOrder(event);
+    dispatch(addPaymentInfo(payInfo));
   }
 
   const {payType, cardNum} = props.payData ? props.payData.info : "";
@@ -146,17 +158,17 @@ export default function PaymentMethod(props) {
     <div className="payment-method">
       {!payMethod.status && <h5 className={!props.notification ? "make-indicate" : ""}>3. Payment Information</h5>}
        {props.notification && <>
-      <form className="payment-method__payment-form" onSubmit={(event) => (onSubmitPayment(event), props.reviewOrder(event))}>
+      <form className="payment-method__payment-form" onSubmit={(event) => (onSubmitPayment(event))}>
       <div className={payMethod.creditCard ? "payment-method__option credit-card": "payment-method__option"}>
       <div className="payment-method__radio-input">
         <InputBox className = "wrapper radio-input" input= {{type: "radio", id: "creditCard", className: "payment-option", name: "paymentMethod", defaultChecked: "checked", onChange: onCreditCard}} label = "Credit Card"/>
       </div>
 
       {payMethod.creditCard && <> <div className="payment-method__text-input">
-        <InputBox ref={nameOnCardRed} className= "wrapper" input = {{type: "text", id: "nameOnCard", value: payInfo.nameOnCard, onChange: cardNameHandler }} label = "Name on Card"/>
+        <InputBox ref={nameOnCardRef} className= "wrapper" input = {{type: "text", id: "nameOnCard", value: payInfo.nameOnCard, onChange: cardNameHandler }} label = "Name on Card"/>
 
         <div className="wrapper">
-          <CardInput input = {{type: "text", id: "creditCardNo", maxLength: 19}} getValue=  {getCardNum} label = "Credit Card Number"/>
+          <CardInput ref = {cardNoRef} input = {{type: "text", id: "creditCardNo", maxLength: 19}} getValue=  {getCardNum} label = "Credit Card Number"/>
         </div>
 
         <div className="wrapper payment-method--card-exp">

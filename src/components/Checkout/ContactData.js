@@ -22,7 +22,7 @@ return (
           <ul>
             <li>{firstName} {lastName}</li>
             <li>{streetAdd1} {streetAdd2}</li>
-            <li>{city}{state} {zipCode}</li>
+            <li>{city}, {state} {zipCode}</li>
             <li>{countryName}</li>
           </ul>
         </div>

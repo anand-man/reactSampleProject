@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import Container from "../commons/Container";
 import Pricing from "../Kart/Pricing";
@@ -19,7 +19,7 @@ export default function CheckoutHandler() {
     paymentInfo: false,
     contactEdit: false,
     shippingEdit: false,
-    paymentInfo: false,
+    paymentEdit: false,
     orderItems: false
   });
 
@@ -80,7 +80,7 @@ export default function CheckoutHandler() {
       paymentInfo: false,
       contactEdit: false,
       shippingEdit: false,
-      paymentInfo: false,
+      paymentEdit: false,
       orderItems: true
     })
   }

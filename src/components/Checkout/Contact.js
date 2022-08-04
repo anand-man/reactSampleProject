@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { addCusAddress } from "../../store/action";
 import CountrySelector from "../commons/CountrySelector";
 import InputBox from "../commons/Input";
@@ -54,7 +54,6 @@ const countryChangeHandler = (event) => {
     countryCode: event.target.value,
     ...countryRef.current.attributes.countryName
   }));
-  console.log(countryCodeName)
 }
 const stateChangeHandler = (event) => {
   setContactInfo(prevState => ({
@@ -63,6 +62,8 @@ const stateChangeHandler = (event) => {
   }));
 }
 
+const emailRef = useRef("");
+const phoneRef = useRef("");
 const firstNameRef = useRef("");
 const secondNameRef = useRef("");
 const streetAdd1Ref = useRef("");
@@ -99,7 +100,51 @@ const onEdit = (event) => {
 
 const submitContact = (event) => {
   event.preventDefault();
-
+  if(emailRef.current.value === ""){
+    alert("Please enter email!");
+    emailRef.current.focus();
+    return;
+  }
+  if(phoneRef.current.value === ""){
+    alert("Please enter phone number!");
+    phoneRef.current.focus();
+    return false;
+  }
+  if(countryRef.current.value === "Select Country"){
+    alert("Please select your country!");
+    countryRef.current.focus();
+    return false;
+  }
+  if(firstNameRef.current.value === ""){
+    alert("Please enter first name!");
+    firstNameRef.current.focus();
+    return false;
+  }
+  if(secondNameRef.current.value === ""){
+    alert("Please enter second name!");
+    secondNameRef.current.focus();
+    return false;
+  }
+  if(streetAdd1Ref.current.value === ""){
+    alert("Please enter street address!");
+    streetAdd1Ref.current.focus();
+    return false;
+  }
+  if(cityRef.current.value === ""){
+    alert("Please enter city!");
+    cityRef.current.focus();
+    return false;
+  }
+  if(stateRef.current.value === "Select State"){
+    alert("Please select state!");
+    stateRef.current.focus();
+    return false;
+  }
+  if(zipCodeRef.current.value === ""){
+    alert("Please enter zip code!");
+    zipCodeRef.current.focus();
+    return false;
+  }
   const checkoutData = {
     customerId: "cus02",
     contactInfo: {
@@ -109,6 +154,7 @@ const submitContact = (event) => {
     }
   }
   dispatch(addCusAddress(checkoutData));
+  props.onContactSave(event);
   dataShow();
 }
 
@@ -116,11 +162,12 @@ const submitContact = (event) => {
     <div className="contact-info">
       {props.notification.contactInfo  && <><h5>Contact information</h5>
       <p>We’ll use these details to keep you informed on your delivery.</p>
-      <form className="contact-info--contact-form" onSubmit={(event) => (submitContact(event), props.onContactSave(event))}>
+      <form className="contact-info--contact-form" onSubmit={(event) => submitContact(event)}>
       <div className="contact-info__email-phone">
-        <InputBox  className = "wrapper" input= {{type: "email", id: "email", placeholder: "abc@xyz.com", name: "email", value: contactInfo.email, onChange: onEmailChange}} label = "Email"/>
+        <InputBox ref={emailRef}  className = "wrapper" input= {{type: "email", id: "email", placeholder: "abc@xyz.com", name: "email", value: contactInfo.email, onChange: onEmailChange}} label = "Email"/>
         <div className="wrapper">
         <PhoneInput
+          ref = {phoneRef}
           placeholder="(222) 222-2222"
           value={contactInfo.contactNo}
           onChange={onPhoneChange} id= "phone"/>
@@ -130,7 +177,7 @@ const submitContact = (event) => {
       </div>
       <div className="contact-info__shiping-info">
         <h5>1. Shipping Information</h5>
-        <CountrySelector ref={countryRef} getCountryCode = {getCountryCode} value = {contactInfo.countryCode} countryname = {contactInfo.countryName} onChange =  {countryChangeHandler}/>
+        <CountrySelector ref={countryRef} getCountryCode = {getCountryCode} value = {countryCodeName.code} countryname = {contactInfo.countryName} onChange =  {countryChangeHandler}/>
         <InputBox ref= {firstNameRef} className = "wrapper" input= {{type: "text", id: "firstName", value: contactInfo.firstName, onChange: onChangeHandler}} label = "First Name"/>
         <InputBox ref= {secondNameRef} className = "wrapper" input= {{type: "text", id: "lastName", value: contactInfo.lastName, onChange: onChangeHandler}} label = "Last Name"/>
         <InputBox ref= {streetAdd1Ref} className = "wrapper" input= {{type: "text", id: "streetAdd", value: contactInfo.streetAdd1, onChange: onChangeHandler}} label = "Street Address"/>
