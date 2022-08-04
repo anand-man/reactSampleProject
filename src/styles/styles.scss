@@ -2,7 +2,6 @@
 @import "./common/variables";
 @import "./common/global";
 @import "./common/buttons";
-// @import "./common/aem-grid";
 
 @import "./sections/header.scss";
 @import "./sections/hero-banner.scss";
@@ -190,6 +189,39 @@
       }
     }
   
+  }
+
+  .slider-dots{
+    display: none;
+    @include desktop-down{
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 6px;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      ul{
+        @include flex();
+        height: 100%;
+        justify-content: center;
+        li{
+          width: 6px;
+          height: 6px;
+          margin: 0 4px;
+          border-radius: 50%;
+          background-color: #666666;
+          cursor: pointer;
+          transition: backgroud ease-out 0.3s;
+          &.active{
+            opacity: 0.3;
+          }
+        }
+
+      }
+    }
+    
   }
 
   .loader-container {

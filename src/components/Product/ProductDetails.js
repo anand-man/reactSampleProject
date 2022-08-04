@@ -13,7 +13,7 @@ export default function ProductDetails() {
   const param = useParams();
   const navigate = useNavigate();
   
-  const { id, image, price, title, category, rating, description } = store.product;
+  const { id, image, price, title,  rating, description } = store.product;
   const [cartItem, setCartItem] = useState({
     initialItem: 1,
     totalItem: 1,
@@ -56,6 +56,8 @@ export default function ProductDetails() {
     dispatch(getKartNotification(product));
   }
 
+  const dataSlider = <div className="nav-img"><img src={image} alt="product" /></div>
+
   const ratingClass = rating && rating.rate === 3 ? "rating star-3" : "rating" || rating.rate >= 3.1 ? "rating star-3.5" : "rating" || rating.rate === 4 ? "rating star-4" : "rating" || rating.rate >= 4.1 ? "rating star-4.5" : "rating" || rating.rate === 2 ? "rating star-2" : "rating" || rating.rate >= 2.5 ? "rating star-2.5" : "rating";
 
   return (
@@ -65,7 +67,7 @@ export default function ProductDetails() {
             <div className="col-six">
               <div className="img-wrapper">
                 <div className="navigation-img-wrapper">
-                  <Slider dataSlider = {Array.from({ length: 5 })} image = {image}/>
+                  <Slider noOfSlide = {Array.from({ length: 5 })} data = {dataSlider}/>
                 </div>
                 <div className="product-img">
                   <img src={image} alt={title}/>

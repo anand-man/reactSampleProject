@@ -39,6 +39,94 @@
   max-width: 1920px;
   margin: auto;
   position: relative;
+
+  .container-slider{
+    width: 100%;
+    position: relative;
+  }
+  .slider{
+    position: relative;
+    height: 650px;
+    @include desktop {
+      height: 500px;
+    }
+    @include desktop-down {
+      height: 642px;
+      width: 100%;
+    }
+  }
+  .slide{
+    @include flex(100%);
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: opacity ease-out 0.3s;
+    &.active{
+      opacity: 1;
+    }
+  }
+  .slider-btn{
+    @include flex(100%);
+    align-items: center;
+    flex-direction: row-reverse;
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    padding: 0 56px;
+    top: 50%;
+    left: 0%;
+    @include desktop-down{
+      display: none;
+    }
+    button{
+      position: relative;
+      height: 100%;
+      width: 20px;
+      text-indent: -9999px;
+      outline: none;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      &.active{
+        pointer-events: initial;
+        opacity: 1;
+      }
+      &.next,&.prev {
+            &::after {
+              content: "";
+              display: block;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            }
+          }
+      &.prev{
+        &::after{
+          background: url("../../../public/Images/chevrons-left.svg") no-repeat -1px -1px;
+          background-size: 229%;
+        }
+      }
+      &.next{
+        &::after{
+          background: url("../../../public//Images/chevrons-left.svg") no-repeat -1px -1px;
+          transform: rotate(-180deg);
+          background-size: 229%;
+        }
+      }
+    }
+  }
+  .slider-dots{
+    bottom: 10%;
+    @include tablet-down{
+      bottom: 15%;
+    }
+  }
 }
 
 .hero-banner__img-wrapper {
@@ -58,6 +146,13 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+}
+.hero-banner__content-wrapper{
+  width: 50%;
+  height: 100%;
+  @include desktop-down{
+    width: auto;
   }
 }
 

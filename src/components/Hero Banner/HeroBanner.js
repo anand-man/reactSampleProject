@@ -1,11 +1,10 @@
 import React from "react";
-import Container from "../commons/Container";
+import Slider from "../commons/slider/Slider";
 
 export default function HeroBanner() {
-  return (
-    <section className="hero-banner">
-      <div className="hero-banner__column-wrapper">
-        <div className="hero-banner__content-wrapper">
+
+  const dataSlider = <>
+  <div className="hero-banner__content-wrapper">
           <div className="hero-banner__content__middle-wrapper">
             <div className="hero-banner__content--inner-wrapper">
             <h1 className="heading-1">Shop the new Signature Collection</h1>
@@ -18,7 +17,13 @@ export default function HeroBanner() {
         </div>
         <div className="hero-banner__img-wrapper">
           <img src={process.env.PUBLIC_URL + `/Images/hero-banner-image.png`} alt="lady running on stone" />
-        </div>
+    </div>
+  </>
+
+  return (
+    <section className="hero-banner">
+      <div className="hero-banner__column-wrapper">
+        {<Slider noOfSlide = {Array.from({ length: 3 })} data = {dataSlider}/>}
       </div>
     </section>
   )

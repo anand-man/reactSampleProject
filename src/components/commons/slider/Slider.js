@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 import SliderBtn from "./SliderBtn";
 
 
@@ -7,10 +7,10 @@ export default function Slider(props) {
   const [slideIndex, setSlideIndex] = useState(1)
 
   const nextSlide = () => {
-    if (slideIndex !== props.dataSlider.length) {
+    if (slideIndex !== props.noOfSlide.length) {
       setSlideIndex(slideIndex + 1)
     }
-    else if (slideIndex === props.dataSlider.length) {
+    else if (slideIndex === props.noOfSlide.length) {
       setSlideIndex(1)
     }
   }
@@ -20,7 +20,7 @@ export default function Slider(props) {
       setSlideIndex(slideIndex - 1)
     }
     else if (slideIndex === 1) {
-      setSlideIndex(props.dataSlider.length)
+      setSlideIndex(props.noOfSlide.length)
     }
   }
 
@@ -31,21 +31,21 @@ export default function Slider(props) {
   return (
     <div className="container-slider">
       <div className="slider">
-      {props.dataSlider.map((item, index) => {
+      {props.noOfSlide.map((item, index) => {
         return (
-          <div key={index} className={slideIndex === index + 1 ? "nav-img active" : "nav-img"}><img src={props.image} alt="product" /></div>
+          <div key={index} className={slideIndex === index + 1 ? "slide active" : "slide"}>{props.data}</div>
         )
       })}
       </div>
 
       <div className="slider-btn">
-      {slideIndex !== props.dataSlider.length && <SliderBtn moveSlide={nextSlide} direction={"next"} />}
-      {slideIndex !== 1 && <SliderBtn moveSlide={prevSlide} direction={"prev"} />}
+      {<SliderBtn classActive = {slideIndex !== props.noOfSlide.length ? "active" : ""} moveSlide={nextSlide} direction={"next"} />}
+      {<SliderBtn classActive = {slideIndex !== 1 ? "active" : ""} moveSlide={prevSlide} direction={"prev"} />}
       </div>
 
       <div className="slider-dots">
         <ul>
-          {props.dataSlider.map((item, index) => (
+          {props.noOfSlide.map((item, index) => (
             <li key={index}
             onClick={() => moveDot(index + 1)}
             className={slideIndex === index + 1 ? "dot active" : "dot"}
