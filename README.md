@@ -1,4 +1,4 @@
-<h2>Hi, I'm Maneesh KS. I am a web developter by profession and a explorer by passion.</h2>
+<h2>Hi, I'm Maneesh KS. I am a web developer by profession and a explorer by passion.</h2>
 
 This is sample of web pages developed using React JS, SASS and fakeapi.
 
