@@ -5,10 +5,11 @@ export default function OrderedItem(props) {
   const totalItems = props.data && props.data.reduce((currentItem, nextItem) =>{
     return currentItem + nextItem.totalItem
   }, 0);
+  const notification = props.notification
  
   return (
     <>
-      {props.notification && <div className= {`${props.className}__order-items`}>
+      {notification && <div className= {`${props.className}__order-items`}>
         <h5>{totalItems} items in your order</h5>
         {props.data && props.data.map(item => {
           const{title, id, image, totalItem} = item

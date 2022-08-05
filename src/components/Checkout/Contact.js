@@ -17,8 +17,8 @@ const [countryCodeName, setCountryCodeName] = useState({
 const dispatch = useDispatch();
 
 const [contactDataShow, setcontactDataShow] = useState(false);
-
-const {email, contactNo, firstName, lastName, streetAdd1, streetAdd2, city, countryName, country, state, zipCode} = props.conDatas ? props.conDatas : "";
+const conDatas = props.conDatas;
+const {email, contactNo, firstName, lastName, streetAdd1, streetAdd2, city, countryName, country, state, zipCode} = conDatas ? conDatas : "";
 
 const [contactInfo, setContactInfo] = useState({
   email: email ? email : "",
@@ -81,9 +81,7 @@ const onChangeHandler = () => {
   const zipValue = zipCodeRef.current.value
       .replace(/\D/g, '')
       .match(/(\d{0,6})/);
-    zipCodeRef.current.value = !zipValue[2] && zipValue[1]
-      
-
+    zipCodeRef.current.value = !zipValue[2] && zipValue[1];
   setContactInfo(prevState => ({
     ...prevState,
     firstName: firstNameRef.current.value, 
@@ -194,7 +192,7 @@ const submitContact = (event) => {
       </div>
       <button className="btn-secondry"><span>{props.notification.contactEdit ? "CONTINUE TO REVIEW ORDER" : "CONTINUE TO SHIPPING METHOD"}</span></button>
       </form> </>}
-      {contactDataShow && <ContactData conDatas = {props.conDatas} onEdit = {onEdit} countryName = {countryCodeName}/>}
+      {contactDataShow && <ContactData conDatas = {conDatas} onEdit = {onEdit} countryName = {countryCodeName}/>}
     </div>
   )
 }

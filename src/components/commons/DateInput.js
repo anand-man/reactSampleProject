@@ -28,7 +28,7 @@ const DateInput = React.forwardRef((props, ref) => {
 
   return (
     <>
-    {state && <i>Please enter valid date.</i>}
+    {state ? <i>Please enter valid date.</i> : undefined}
     <input className= {state ? "invilid" : ""} {...props.input} ref={ref} onChange={handleChange} />
     <label htmlFor = {props.input.id}>{props.label}</label>
     </>

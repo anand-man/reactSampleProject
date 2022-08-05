@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 
 export default function ContactData(props) {
 
-const store = useSelector(state => state.checkoutData);
+const store = useSelector(state => state.checkoutData.checkoutData.contactInfo);
+const {email, contactNo, firstName, lastName, streetAdd1, streetAdd2, city, countryName, state, zipCode} = store ? store : "";
 
-const {email, contactNo, firstName, lastName, streetAdd1, streetAdd2, city, countryName, state, zipCode} = store.checkoutData.contactInfo ? store.checkoutData.contactInfo : "";
 return (
     <div className="contact-info__contact-data">
         <div className="contact-info__contact-data--title">

@@ -214,6 +214,19 @@
 
 .product-checkout__order-placed{
   width: 100%;
-  max-width: 300px;
+  max-width: 100%;
   margin: auto;
+  text-align: center;
+  .kart-btn{
+    max-width: 300px;
+  }
+  p{
+    color: $unnamed-color-172026;
+    font-size: $font-size-16;
+    line-height: $line-spacing-24;
+    margin: 24px 0 0;
+    a{
+      color: $unnamed-color-172026;
+    }
+  }
 }

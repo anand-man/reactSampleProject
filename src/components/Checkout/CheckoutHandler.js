@@ -119,6 +119,7 @@ export default function CheckoutHandler() {
 
           {checkoutAttr.orderItems && <div className="product-checkout__order-placed">
             <div className="kart-btn"  onClick={() => {navigate("/order-placed"); dispatch(orderPlaced(orderDtail))}}><span>PLACE ORDER</span></div>
+            <p>By clicking confirm order you agree to our <a href="#">Terms and Conditions</a></p>
           </div>} 
         </div>
         <div className= {checkoutAttr.contactInfo ? "col-three" : "col-three no-sign"}>

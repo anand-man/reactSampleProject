@@ -6,7 +6,7 @@ import Container from "../commons/Container";
 export default function OrderPlaced() {
 
   const store = useSelector(state => state.checkoutData.orderDetail);
-
+  const details = store.details;
   const { email, contactNo, firstName, lastName, streetAdd1, streetAdd2, city, countryName, state, zipCode } = store.details ? store.details.contactInfo : "";
 
   return (
@@ -44,10 +44,10 @@ export default function OrderPlaced() {
                 <div className="order-placed__shipping-data--info">
                   <ul>
                     <li>{
-                      (store.details.shippingMethod === "standard" && "Standard Shipping") || (store.details.shippingMethod === "express" && "Express Delivery") || (store.details.shippingMethod === "nextDay" && "Next Day Delivery")
+                      (details.shippingMethod === "standard" && "Standard Shipping") || (details.shippingMethod === "express" && "Express Delivery") || (details.shippingMethod === "nextDay" && "Next Day Delivery")
                     }</li>
                     <li>{
-                      (store.details.shippingMethod === "standard" && "Est. delivery in 4 - 8 business days FREE") || (store.details.shippingMethod === "express" && "Est. delivery in 2-5 business days via USPS") || (store.details.shippingMethod === "nextDay" && "Est. delivery in Next business days via FedEx")
+                      (details.shippingMethod === "standard" && "Est. delivery in 4 - 8 business days FREE") || (details.shippingMethod === "express" && "Est. delivery in 2-5 business days via USPS") || (details.shippingMethod === "nextDay" && "Est. delivery in Next business days via FedEx")
                     }</li>
                   </ul>
                 </div>
@@ -58,13 +58,13 @@ export default function OrderPlaced() {
                 </div>
                 <div className="order-placed__payment-data--pay-info">
                   <ul>
-                    <li>{store.details.paymentInfo.info.payType}</li>
-                    <li>Visa ending in {store.details.paymentInfo.info.cardNum.slice(12, 16)}</li>
+                    <li>{details.paymentInfo.info.payType}</li>
+                    <li>Visa ending in {details.paymentInfo.info.cardNum.slice(12, 16)}</li>
                   </ul>
                 </div>
               </div>
             </div>
-            <OrderedItem className="order-placed" data = {store.details.products} notification={true} />
+            <OrderedItem className="order-placed" data = {details.products} notification={true} />
             <div className="order-placed__description">
               <p>You will also receive an email with the details and we will let you know when your order has shipped.</p>
               <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. For assistance call Support at 1-800-867-5309, M - F, 9am - 8pm EST.</p>

@@ -6,15 +6,16 @@ import InputBox from "../commons/Input";
 export default function ShipingMethod(props) {
 
   const dispatch = useDispatch();
-
+  const notification = props.shippingData.notification;
+  const shippingVal = props.shippingData.value;
   const [shippingDataShow, setShippingDataShow] = useState(true);
-  const [shippingMethod, setShippingMethod] = useState(props.shippingData.value && props.shippingData.value);
+  const [shippingMethod, setShippingMethod] = useState(shippingVal && shippingVal);
 
   const shippingRef = useRef();
 
   const dataShow = (event) => {
     event.preventDefault();
-    setShippingDataShow(!props.shippingData.notification);
+    setShippingDataShow(!notification);
   }
 
   const onEdit = (event) => {
@@ -50,8 +51,8 @@ export default function ShipingMethod(props) {
 
   return (
     <div className="shipping-method">
-      {shippingDataShow && <h5 className={!props.shippingData.notification ? "make-indicate" : ""}>2. Shipping Method</h5>}
-      {props.shippingData.notification && <form className="shipping-method__shipping-form" onSubmit={(event) => {onSubmit(event)}}> <div className="shipping-method__shipping-info">
+      {shippingDataShow && <h5 className={!notification ? "make-indicate" : ""}>2. Shipping Method</h5>}
+      {notification && <form className="shipping-method__shipping-form" onSubmit={(event) => {onSubmit(event)}}> <div className="shipping-method__shipping-info">
         <InputBox ref={shippingRef} className = "wrapper radio-input" input= {{type: "radio", id: "standard", name: "shipingMethod", value: "standard", defaultChecked: "checked"}} boldTxt = "Standard Shipping" label = {`(4-8 business days via USPS) FREE`}/>
         <InputBox ref={shippingRef} className = "wrapper radio-input" input= {{type: "radio", id: "express", name: "shipingMethod", value: "express", defaultChecked: false}} boldTxt = "Express Delivery" label = " (2-5 business days via USPS) $17.95"/>
         <InputBox ref={shippingRef} className = "wrapper radio-input" input= {{type: "radio", id: "nextDay", name: "shipingMethod", value: "nextDay"}} boldTxt = "Next Day Delivery" label = " (Next business days via FedEx) $53.61"/>
