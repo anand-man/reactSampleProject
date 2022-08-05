@@ -29,7 +29,7 @@ export default function ShipingMethod(props) {
             element.checked = true;
           }
         });
-      }, 500)
+      }, 1)
     }
   }
 
@@ -47,10 +47,6 @@ export default function ShipingMethod(props) {
     setShippingMethod(method);
     dispatch(addShippingMethod(method));
   }
-
-  // const shippingMtd = document.querySelector(".shipping");
-  // const {shippingMethod} = props.data ? props.data : "";
-
 
   return (
     <div className="shipping-method">
