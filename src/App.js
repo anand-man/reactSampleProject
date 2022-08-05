@@ -1,18 +1,21 @@
+import React, { lazy, Suspense } from "react";
 import "./styles/styles.scss";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import Products from "./components/Product/Product";
 import {Routes, Route} from "react-router-dom";
-import ProductDetails from "./components/Product/ProductDetails";
-import ProductKart from "./components/Kart/ProductKart";
-import SecondLevelBanner from "./components/Second Level Banner/SecondLevelBanner";
-import CheckoutHandler from "./components/Checkout/CheckoutHandler";
-import OrderPlaced from "./components/Order Placed/OrderPlaced";
-import HomePage from "./components/Home Page/HomePage";
+import Loader from "./components/commons/Loader";
+
+const Header = lazy(() => import("./components/Header/Header"));
+const Footer = lazy(() => import("./components/Footer/Footer"));
+const HomePage = lazy(() => import("./components/HomePage/HomePage"));
+const SecondLevelBanner = lazy(() => import("./components/SecondLevelBanner/SecondLevelBanner"));
+const Products = lazy(() => import("./components/Product/Product"));
+const ProductDetails = lazy(() => import("./components/Product/ProductDetails"));
+const ProductKart = lazy(() => import("./components/Kart/ProductKart"));
+const CheckoutHandler = lazy(() => import("./components/Checkout/CheckoutHandler"));
+const OrderPlaced = lazy(() => import("./components/OrderPlaced/OrderPlaced"));
 
 function App() {
   return (
-    <>
+    <Suspense fallback={<Loader/>}>
       <Header/>
       <Routes>
         <Route path="/" element= {<HomePage/>}/>
@@ -23,7 +26,7 @@ function App() {
         <Route path ="/order-placed" element = {<OrderPlaced/>} />
       </Routes>
       <Footer/>
-    </>
+    </Suspense>
   );
 }
 

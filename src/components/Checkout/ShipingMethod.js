@@ -65,10 +65,10 @@ export default function ShipingMethod(props) {
         <div className="shipping-method__shipping-data--info">
           <ul>
             <li>{
-                shippingMethod === "standard" && "Standard Shipping" || shippingMethod === "express" && "Express Delivery" || shippingMethod === "nextDay" && "Next Day Delivery"
+                (shippingMethod === "standard" && "Standard Shipping") || (shippingMethod === "express" && "Express Delivery") || (shippingMethod === "nextDay" && "Next Day Delivery")
               }</li>
             <li>{
-                shippingMethod === "standard" && "Est. delivery in 4 - 8 business days FREE" || shippingMethod === "express" && "Est. delivery in 2-5 business days via USPS" || shippingMethod === "nextDay" && "Est. delivery in Next business days via FedEx"
+                (shippingMethod === "standard" && "Est. delivery in 4 - 8 business days FREE") || (shippingMethod === "express" && "Est. delivery in 2-5 business days via USPS") || (shippingMethod === "nextDay" && "Est. delivery in Next business days via FedEx")
               }</li>
           </ul>
         </div>
