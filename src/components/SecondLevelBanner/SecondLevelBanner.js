@@ -10,7 +10,7 @@ export default function SecondLevelBanner() {
             <h1 className="heading-1">Men’s Outerwear</h1>
           </div>
           <div className="second-level-banner--img-wrapper">
-            <img src={process.env.PUBLIC_URL + `/Images/banner-image.PNG`} alt ="knee of man shows"/>
+            <img src={process.env.PUBLIC_URL + `/Images/banner-image.png`} alt ="knee of man shows"/>
           </div>
         </div>
       </Container>

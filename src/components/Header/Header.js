@@ -13,28 +13,28 @@ export default function Header() {
   const menuToggle = () => {
     document.body.classList.toggle("menu-mobile");
     const header = document.querySelector(".header");
-    header.getElementsByClassName("column-wrapper")[0].classList.toggle("active");
+    header.getElementsByClassName("header__column-wrapper")[0].classList.toggle("active");
   }
   const activeMenuItem = (event) => {
-    const menuItem = document.querySelector(".header").querySelector(".product-name").querySelector("ul").childNodes;
+    const menuItem = document.querySelector(".header").querySelector(".header__col-seven--center-menu").querySelector("ul").childNodes;
     menuItem.forEach((item) =>{
       item.classList.remove("selected");
     });
     event.target.parentNode.classList.add("selected");
     const header = document.querySelector(".header");
-    header.getElementsByClassName("column-wrapper")[0].classList.remove("active");
+    header.getElementsByClassName("header__column-wrapper")[0].classList.remove("active");
     document.body.classList.remove("menu-mobile")
   }
   
   return (
     <header className="header">
       <Container>
-        <div className="column-wrapper">
-          <div className="mobile-menu">
-            <div className="bar-wrapper" onClick={menuToggle}>
+        <section className="header__column-wrapper">
+          <div className="header__mobile-menu">
+            <div className="header__bar-wrapper" onClick={menuToggle}>
               <svg xmlns="http://www.w3.org/2000/svg" className="ionicon" viewBox="0 0 512 512"><title>Menu</title><path fill="#ffffff" stroke="#ffffff" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="40" d="M80 160h352M80 256h352M80 352h352" /></svg>
             </div>
-            <div className="logo">
+            <div className="header__logo">
                 <a href='#'><img src={process.env.PUBLIC_URL + `/Images/logo.png`} alt="logo"/></a>
             </div>
             <div className="close">
@@ -42,26 +42,24 @@ export default function Header() {
               <svg xmlns="http://www.w3.org/2000/svg" className="ionicon" viewBox="0 0 512 512" onClick={menuToggle}><title>Close</title><path fill="none" stroke="#172026" strokeLinecap="round" strokeLinejoin="round" strokeWidth="32" d="M368 368L144 144M368 144L144 368"/></svg>
             </div>
           </div>
-          <div className="col-seven">
-            <div className="left-menu menu-title">
+          <aside className="header__col-seven">
+            <div className="header__col-sevedn--left-menu menu-title">
               <a href='#'>
                 <img src= {process.env.PUBLIC_URL + `/Images/logo.png`} alt="logo"/>
               </a>
             </div>
-            <div className="center-menu">
-              <div className="product-name">
-                <ul>
+            <div className="header__col-seven--center-menu">
+                <ul className="header__menu-list">
                   <li onClick={activeMenuItem} className = "selected"><a href="#">Home</a></li>
                   <li onClick={activeMenuItem}><a href="#">Women</a></li>
                   <li onClick={activeMenuItem}><a href="#">Men</a></li>
                   <li onClick={activeMenuItem}><a href="#">Electronics</a></li>
                   <li onClick={activeMenuItem}><a href="#">Jewellery</a></li>
                 </ul>
-              </div>
             </div>
-          </div>
-          <div className="col-three">
-            <ul>
+          </aside>
+          <aside className="header__col-three">
+            <ul className="header__menu-list">
               <li id="cartBtn" onClick={() => navigate("/kart")}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22">
                   <g id="shopping-bag" transform="translate(-2 -1)">
@@ -73,8 +71,8 @@ export default function Header() {
                 <span>{totalItems}</span>
               </li>
             </ul>
-          </div>
-        </div>
+          </aside>
+        </section>
       </Container>
     </header>
   )

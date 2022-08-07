@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/reactSampleProject/build/static/css/main.213529b3.css",
-    "main.js": "/reactSampleProject/build/static/js/main.f7a90645.js",
-    "static/js/676.18236908.chunk.js": "/reactSampleProject/build/static/js/676.18236908.chunk.js",
+    "main.css": "/reactSampleProject/build/static/css/main.49b9c91d.css",
+    "main.js": "/reactSampleProject/build/static/js/main.47bc3ee2.js",
+    "static/js/676.da49b2a1.chunk.js": "/reactSampleProject/build/static/js/676.da49b2a1.chunk.js",
     "static/js/114.c2d3907e.chunk.js": "/reactSampleProject/build/static/js/114.c2d3907e.chunk.js",
-    "static/js/724.e71c9d82.chunk.js": "/reactSampleProject/build/static/js/724.e71c9d82.chunk.js",
-    "static/js/163.eb733667.chunk.js": "/reactSampleProject/build/static/js/163.eb733667.chunk.js",
+    "static/js/724.b8533061.chunk.js": "/reactSampleProject/build/static/js/724.b8533061.chunk.js",
+    "static/js/163.4dda93bd.chunk.js": "/reactSampleProject/build/static/js/163.4dda93bd.chunk.js",
     "static/js/826.f89dc1fe.chunk.js": "/reactSampleProject/build/static/js/826.f89dc1fe.chunk.js",
     "static/js/573.c4b4491b.chunk.js": "/reactSampleProject/build/static/js/573.c4b4491b.chunk.js",
     "static/js/673.ebc7f53b.chunk.js": "/reactSampleProject/build/static/js/673.ebc7f53b.chunk.js",
@@ -39,12 +39,12 @@
     "static/media/check-white.svg": "/reactSampleProject/build/static/media/check-white.686a133c8c247b95c663.svg",
     "static/media/check.svg": "/reactSampleProject/build/static/media/check.388123a2385c15dd16c5.svg",
     "static/media/chevron-up.svg": "/reactSampleProject/build/static/media/chevron-up.ea41eae66638440ee8b3.svg",
-    "main.213529b3.css.map": "/reactSampleProject/build/static/css/main.213529b3.css.map",
-    "main.f7a90645.js.map": "/reactSampleProject/build/static/js/main.f7a90645.js.map",
-    "676.18236908.chunk.js.map": "/reactSampleProject/build/static/js/676.18236908.chunk.js.map",
+    "main.49b9c91d.css.map": "/reactSampleProject/build/static/css/main.49b9c91d.css.map",
+    "main.47bc3ee2.js.map": "/reactSampleProject/build/static/js/main.47bc3ee2.js.map",
+    "676.da49b2a1.chunk.js.map": "/reactSampleProject/build/static/js/676.da49b2a1.chunk.js.map",
     "114.c2d3907e.chunk.js.map": "/reactSampleProject/build/static/js/114.c2d3907e.chunk.js.map",
-    "724.e71c9d82.chunk.js.map": "/reactSampleProject/build/static/js/724.e71c9d82.chunk.js.map",
-    "163.eb733667.chunk.js.map": "/reactSampleProject/build/static/js/163.eb733667.chunk.js.map",
+    "724.b8533061.chunk.js.map": "/reactSampleProject/build/static/js/724.b8533061.chunk.js.map",
+    "163.4dda93bd.chunk.js.map": "/reactSampleProject/build/static/js/163.4dda93bd.chunk.js.map",
     "826.f89dc1fe.chunk.js.map": "/reactSampleProject/build/static/js/826.f89dc1fe.chunk.js.map",
     "573.c4b4491b.chunk.js.map": "/reactSampleProject/build/static/js/573.c4b4491b.chunk.js.map",
     "673.ebc7f53b.chunk.js.map": "/reactSampleProject/build/static/js/673.ebc7f53b.chunk.js.map",
@@ -54,7 +54,7 @@
     "57.c002be37.chunk.js.map": "/reactSampleProject/build/static/js/57.c002be37.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.213529b3.css",
-    "static/js/main.f7a90645.js"
+    "static/css/main.49b9c91d.css",
+    "static/js/main.47bc3ee2.js"
   ]
 }
