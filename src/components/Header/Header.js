@@ -45,7 +45,7 @@ export default function Header() {
           <aside className="header__col-seven">
             <div className="header__col-sevedn--left-menu menu-title">
               <a href='#'>
-                <img src= {process.env.PUBLIC_URL + `/Images/logo.png`} alt="logo"/>
+                <img src= {process.env.PUBLIC_URL + `/Images/logo.PNG`} alt="logo"/>
               </a>
             </div>
             <div className="header__col-seven--center-menu">
