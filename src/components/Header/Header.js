@@ -35,7 +35,7 @@ export default function Header() {
               <svg xmlns="http://www.w3.org/2000/svg" className="ionicon" viewBox="0 0 512 512"><title>Menu</title><path fill="#ffffff" stroke="#ffffff" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="40" d="M80 160h352M80 256h352M80 352h352" /></svg>
             </div>
             <div className="header__logo">
-                <a href='#'><img src={process.env.PUBLIC_URL + `/Images/logo.png`} alt="logo"/></a>
+                <a href='#/'><img src={process.env.PUBLIC_URL + `/Images/logo.png`} alt="logo"/></a>
             </div>
             <div className="close">
               <span>Shop Categories</span>
@@ -44,17 +44,17 @@ export default function Header() {
           </div>
           <aside className="header__col-seven">
             <div className="header__col-sevedn--left-menu menu-title">
-              <a href='#'>
+              <a href='#/'>
                 <img src= {process.env.PUBLIC_URL + `/Images/logo.png`} alt="logo"/>
               </a>
             </div>
             <div className="header__col-seven--center-menu">
                 <ul className="header__menu-list">
-                  <li onClick={activeMenuItem} className = "selected"><a href="#">Home</a></li>
-                  <li onClick={activeMenuItem}><a href="/products">Women</a></li>
-                  <li onClick={activeMenuItem}><a href="/products">Men</a></li>
-                  <li onClick={activeMenuItem}><a href="/products">Electronics</a></li>
-                  <li onClick={activeMenuItem}><a href="/products">Jewellery</a></li>
+                  <li onClick={activeMenuItem} className = "selected"><a href="#/">Home</a></li>
+                  <li onClick={activeMenuItem}><a href="#/products">Women</a></li>
+                  <li onClick={activeMenuItem}><a href="#/products">Men</a></li>
+                  <li onClick={activeMenuItem}><a href="#/products">Electronics</a></li>
+                  <li onClick={activeMenuItem}><a href="#/products">Jewellery</a></li>
                 </ul>
             </div>
           </aside>
