@@ -51,10 +51,10 @@ export default function Header() {
             <div className="header__col-seven--center-menu">
                 <ul className="header__menu-list">
                   <li onClick={activeMenuItem} className = "selected"><a href="#">Home</a></li>
-                  <li onClick={activeMenuItem}><a href="#">Women</a></li>
-                  <li onClick={activeMenuItem}><a href="#">Men</a></li>
-                  <li onClick={activeMenuItem}><a href="#">Electronics</a></li>
-                  <li onClick={activeMenuItem}><a href="#">Jewellery</a></li>
+                  <li onClick={activeMenuItem}><a href="/products">Women</a></li>
+                  <li onClick={activeMenuItem}><a href="/products">Men</a></li>
+                  <li onClick={activeMenuItem}><a href="/products">Electronics</a></li>
+                  <li onClick={activeMenuItem}><a href="/products">Jewellery</a></li>
                 </ul>
             </div>
           </aside>
