@@ -3,7 +3,7 @@ import "./styles/styles.scss";
 import {Routes, Route} from "react-router-dom";
 import Loader from "./components/commons/Loader";
 import ProductKart from "./components/Kart/ProductKart";
-import Header from "./components/Header/Header";
+import {Header} from "./components/Header/index";
 import Footer from "./components/Footer/Footer";
 import OrderPlaced from "./components/OrderPlaced/OrderPlaced";
 import CheckoutHandler from "./components/Checkout/CheckoutHandler";
